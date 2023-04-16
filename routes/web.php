@@ -52,6 +52,8 @@ Route::get('/pers', [PressController::class, 'index']);
 Route::get('/article',[ArticleController::class, 'index']);
 Route::get('/contact', [PublicController::class, 'contact']);
 
+// Route::resource('/content', PublicController::class);
+
 Route::get('/login', function () {
     return view('auth/login');
 });

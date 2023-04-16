@@ -30,10 +30,10 @@
                             <div class="px-6 py-4 font-robotoserif text-black-1E1E1E">
                                 <h2 class="font-bold text-center text-4xl">{{ $row->judul }}</h2>
                                 <p class="text-center text-base py-5">
-                                    {{ Str::limit($row->isi, 150) }}
+                                    {{ Str::limit(strip_tags($row->isi, 150)) }}
                                 </p>
                                 <p class="text-base font-bold">
-                                    by : {{ Str::limit($row->isi, 150) }}
+                                    by : {{ $row->penulis }}
                                 </p>
                                 <div class="flex items-end">
                                     <p class="text-base opacity-70">
@@ -69,10 +69,10 @@
                                     </p>
                                     <div class="flex items-end">
                                         <p class="text-base opacity-70">
-                                            Jan 1st, 2023
+                                            {{ $row->created_at }}
                                         </p>
                                         <p class="text-base opacity-70 px-5">
-                                            {{ $row->created_at }}
+                                            
                                         </p>
                                     </div>                                
                                     <div class="flex justify-end -mt-12">

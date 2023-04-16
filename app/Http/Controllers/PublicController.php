@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Artikel;
 
 class PublicController extends Controller
 {
@@ -33,4 +34,8 @@ class PublicController extends Controller
     public function contact() {
         return view('contact');
     }
+    // public function show($id) {
+    //     $artikel = Artikel::findOrFail($id);
+    //     return view('content', compact('artikel'));
+    // }
 }
