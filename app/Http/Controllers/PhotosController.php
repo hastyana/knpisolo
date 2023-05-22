@@ -8,7 +8,7 @@ use App\Models\Foto;
 class PhotosController extends Controller
 {
     public function index() {
-        $photos = Foto::all();
+        $photos = Foto::latest()->paginate(30); 
         return view('photos', compact('photos'));
     }
 }

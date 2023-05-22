@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('judul');
             $table->string('slug')->unique();
             $table->string('penulis');
+            $table->string('profil')->nullable();
             $table->string('kategori');
             $table->string('jenis');
             $table->text('isi');

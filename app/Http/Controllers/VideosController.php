@@ -8,7 +8,7 @@ use App\Models\Video;
 class VideosController extends Controller
 {
     public function index() {
-        $video = Video::all();
+        $video = Video::latest()->paginate(5);
         return view('videos', compact('video'));
     }
 }

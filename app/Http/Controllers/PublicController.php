@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Artikel;
+use App\Models\Contact;
 
 class PublicController extends Controller
 {
@@ -32,6 +32,9 @@ class PublicController extends Controller
         return view('article');
     }
     public function contact() {
+        return view('contact');
+    }
+    public function create () {
         return view('contact');
     }
     // public function show($id) {

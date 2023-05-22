@@ -9,19 +9,25 @@
         <div class="flex items-center justify-center w-auto">
             <ul class="flex md:justify-between items-center text-base text-white-fafafa font-roboto font-semibold">
                 <li>
-                    <a class="xl:p-4 md:p-2 sm:p-2 p-1 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="#home">Home</a>
+                    <a class="xl:p-4 md:p-2 sm:p-2 p-1 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="{{ url('/') }}">Home</a>
                 </li>
                 <li>
-                    <a class="xl:p-4 md:p-2 sm:p-2 p-1 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="#about">About</a>
+                    <a class="xl:p-4 md:p-2 sm:p-2 p-1 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="{{ url('/about') }}">About</a>
                 </li>
                 <li>
-                    <a class="xl:p-4 md:p-2 sm:p-2 p-1 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="#project">Gallery</a>
+                    <a class="xl:p-4 md:p-2 sm:p-2 p-1 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="{{ url('/photos') }}">Photos</a>
                 </li>
                 <li>
-                    <a class="xl:p-4 md:p-2 sm:p-2 p-1 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="#client">Blog</a>
+                    <a class="xl:p-4 md:p-2 sm:p-2 p-1 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="{{ url('/videos') }}">Videos</a>
                 </li>
                 <li>
-                    <a class="xl:p-4 md:p-2 sm:p-2 p-1 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="#contact">Contact</a>
+                    <a class="xl:p-4 md:p-2 sm:p-2 p-1 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="{{ url('/blog') }}">Blog</a>
+                </li>
+                <li>
+                    <a class="xl:p-4 md:p-2 sm:p-2 p-1 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="{{ url('/okp') }}">OKP</a>
+                </li>
+                <li>
+                    <a class="xl:p-4 md:p-2 sm:p-2 p-1 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="{{ url('/contact') }}">Contact</a>
                 </li>
             </ul>
         </div>

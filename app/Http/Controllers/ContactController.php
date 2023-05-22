@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Contact;
+use App\Models\Contact; 
 
 class ContactController extends Controller
 {
-    public function contact () {
+    public function contact () { 
         return view('contact');
-    }
+    } 
     public function create () {
         return view('contact');
     }
@@ -36,7 +36,6 @@ class ContactController extends Controller
             $data->save();
 
             Session()->flash('alert-success', 'Data berhasil disimpan');
-            // return redirect('dashboard/galeri/'.$data->id);
             return redirect('contact');
         } catch (\Exception $e) {
             Session()->flash('alert-danger', $e->getMessage());

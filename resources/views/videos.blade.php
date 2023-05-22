@@ -21,48 +21,22 @@
 
     <section id="Videos" class="py-20 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0">        
         <div class="container mx-auto py-0 flex flex-col justify-center">
-            <div class="w-full px-5 md:px-10 flex flex-col justify-center items-center py-5">
+            <div class="w-full px-5 md:px-10 flex flex-col justify-center items-center">
                 
                 @foreach ($video as $row)
+                <div class="py-10">
+                    
+                    <iframe class="w-720p h-480p" src="{{ $row->link }}">
+                    </iframe>
+                    <h1 class="text-2xl font-bold text-black-1E1E1E m-2 text-center uppercase">{{ $row->judul }}</h1>
 
-                <iframe class="w-720p h-480p" src="{{ $row->link }}">
-                </iframe>
-                <h1 class="text-2xl font-bold text-black-1E1E1E m-2 text-center uppercase">{{ $row->judul }}</h1>
-
+                </div>
                 @endforeach
 
             </div>
-            <div class="flex justify-center pt-5">
-                <nav aria-label="Page navigation example">
-                    <ul class="list-style-none flex">
-                        <li>
-                            <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"  href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white" href="#">
-                                1
-                            </a>
-                        </li>
-                        <li aria-current="page">
-                            <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white" href="#">
-                                2
-                            </a>
-                        </li>
-                        <li>
-                            <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white" href="#">
-                                3
-                            </a>
-                        </li>
-                        <li>
-                            <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            @if($video->hasPages())
+                {{ $video->links() }}
+            @endif
         </div>
     </section>
 

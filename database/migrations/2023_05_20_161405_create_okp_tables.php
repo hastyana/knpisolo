@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('copywritings', function (Blueprint $table) {
+        Schema::create('okp_tables', function (Blueprint $table) {
             $table->id();
-            $table->string('profil')->nullable();
-            $table->string('gambar')->nullable();
             $table->string('nama');
-            $table->string('email')->unique();
-            $table->string('file')->nullable();
+            $table->string('email');
+            $table->string('alamat');
+            $table->string('link_maps');
+            $table->string('website');
+            $table->string('link_web');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('copywritings');
+        Schema::dropIfExists('okp_tables');
     }
 };

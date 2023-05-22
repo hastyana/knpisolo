@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <link rel="icon" href="{{ asset ('img/logo.png') }}">
-    <title>Login | KNPI Solo Admin</title>
+    <title>Administrator | KNPI Solo Admin</title>
 </head>
 
 <body class="bg-white-fafafa">

@@ -34,7 +34,7 @@ class InfografisController extends Controller
 
             Session()->flash('alert-success', 'Data berhasil disimpan');
             // return redirect('dashboard/galeri/'.$data->id);
-            return redirect('dashboard/infografis/');
+            return redirect('dashboard/infografis-add/');
         } catch (\Exception $e) {
             Session()->flash('alert-danger', $e->getMessage());
             return redirect('dashboard/infografis-add/')->withInput();

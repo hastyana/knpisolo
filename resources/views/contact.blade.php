@@ -55,8 +55,8 @@ if(old()) {
                                         </p>
                                     </div>
                                     <div>
-                                        <a href="https://api.whatsapp.com/send?phone=62000000000" class="font-roboto 4xl:text-2xl 2xl:text-xl xl:text-lg lg:text-base md:text-2xl text-lg font-medium text-black-1E1E1E break-words hover:opacity-60">
-                                            0000-0000-0000
+                                        <a href="https://api.whatsapp.com/send?phone=6282334200757" class="font-roboto 4xl:text-2xl 2xl:text-xl xl:text-lg lg:text-base md:text-2xl text-lg font-medium text-black-1E1E1E break-words hover:opacity-60">
+                                            0823-3420-0757
                                         </a>
                                     </div>
                                 </li>
@@ -91,8 +91,8 @@ if(old()) {
                                         </p>
                                     </div>
                                     <div>
-                                        <a href="https://api.whatsapp.com/send?phone=62000000000" class="font-roboto 4xl:text-2xl 2xl:text-xl xl:text-lg lg:text-base md:text-2xl text-lg font-medium text-black-1E1E1E break-words hover:opacity-60">
-                                            contact@email.com
+                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=surakartaknpi@gmail.com" class="font-roboto 4xl:text-2xl 2xl:text-xl xl:text-lg lg:text-base md:text-2xl text-lg font-medium text-black-1E1E1E break-words hover:opacity-60">
+                                            surakartaknpi@gmail.com
                                         </a>
                                     </div>
                                 </li>
@@ -124,8 +124,8 @@ if(old()) {
                     </div>
                     <div>
                         <div class="w-full px-4 flex justify-center">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d32658826.575899865!2d99.40594303809047!3d-2.2751528804043257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c4c07d7496404b7%3A0xe37b4de71badf485!2sIndonesia!5e0!3m2!1sid!2sid!4v1673772526797!5m2!1sid!2sid" 
-                            width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.0977614002686!2d110.83015687397295!3d-7.564319674703245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a17aab2991443%3A0xe2192bb606ae9493!2sGedung%20Sekretariat%20Bersama%20Kota%20Surakarta!5e0!3m2!1sid!2sid!4v1684115335014!5m2!1sid!2sid" 
+                            width="1000" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
@@ -142,7 +142,7 @@ if(old()) {
                 
                 @include('errors.message')
 
-                <form class="py-3 font-roboto px-5" method="POST" action="{{ url('contact') }}" onsubmit="return confirmSubmit()" enctype="multipart/form-data">
+                <form class="py-3 font-roboto px-5" method="POST" action="{{ url('/contact') }}" onsubmit="return confirmSubmit()" enctype="multipart/form-data">
                     
                     @csrf
                     
@@ -159,7 +159,7 @@ if(old()) {
                         <label for="isi" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -mt-2 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Message</label>
                     </div>
                     <div class="relative z-0 w-full mb-6 group">
-                        <label class="block mb-2 text-sm font-medium text-black-1E1E1E" for="gambar">Upload Image</label>
+                        <label class="block mb-2 text-sm font-medium text-black-1E1E1E" for="gambar">Upload Profil</label>
                         <input class="block w-full text-sm text-black-1E1E1E border-0 border-b-2 border-gray-300 rounded-lg cursor-pointer focus:outline-none" id="gambar" name="gambar" type="file" required>
                         <p class="font-normal py-2 md:text-start text-center text-red-600">
                             *max file size 2MB
@@ -169,7 +169,7 @@ if(old()) {
                         Kirim
                     </button>
                 </form>
-            </div>            
+            </div>             
         </div>
     </section>
 

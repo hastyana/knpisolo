@@ -116,7 +116,9 @@
                                 <table class="w-full whitespace-no-wrap">
                                     <thead>
                                         <tr class="text-xs font-semibold tracking-wide text-left text-black-1E1E1E uppercase border-b">
-                                            <th class="px-4 py-3">Profile</th>
+                                            <th class="px-4 py-3">No</th>
+                                            <th class="px-4 py-3">Profil</th>
+                                            <th class="px-4 py-3">Gambar</th>
                                             <th class="px-4 py-3">Nama</th>
                                             <th class="px-4 py-3">Email</th>
                                             <th class="px-4 py-3">File</th>
@@ -124,73 +126,49 @@
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white-fafafa divide-y">
+
+                                        @php $no=0; @endphp
+                                        @foreach ($data as $row)
+                                        @php $no++; @endphp
+
                                         <tr class="text-black-1E1E1E">
+                                            <td class="px-4 py-3 text-sm">
+                                                {{ $no }}
+                                            </td>
                                             <td class="px-4 py-3">
-                                                <img src={{ asset ('img/ilustrasi.png') }} alt="organization" class="w-10 h-7 object-cover mt-0">
+                                                <a target="_blank" href="{{ url ('profil', $row->id) }}">
+                                                    <img src="{{ asset ('storage/'.$row->profil) }}" alt="{{ $row->profil }}" title="{{ $row->judul }}" class="w-16 h-16 object-cover rounded-full" />
+                                                </a>                                                
+                                            </td>
+                                            <td class="px-4 py-3">
+                                                <a target="_blank" href="{{ url ('image', $row->id) }}">
+                                                    <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->judul }}" class="w-32 h-28" />
+                                                </a>   
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                                $ 863.45
+                                                {{ $row->nama }}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                                $ 863.45
-                                            </td>
-                                            <td class="px-4 py-3 text-xs">
-                                                <span class="font-semibold">
-                                                    Approved
-                                                </span>
+                                                {{ $row->email }}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                                6/10/2020
+                                                <a target="_blank" href="{{ url ('file', $row->id) }}" class="text-base text-center font-roboto font-normal text-blue-1081E8 hover:text-black-1E1E1E">
+                                                    File
+                                                </a>
+                                            </td>
+                                            <td class="px-4 py-3 text-sm">
+                                                {{ $row->created_at }}
                                             </td>
                                         </tr>
+
+                                        @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-black-1E1E1E uppercase border-t sm:grid-cols-9">
-                                <span class="flex items-center col-span-3">
-                                    Showing 21-30 of 100
-                                </span>
-                                <span class="col-span-2"></span>
-                                <!-- Pagination -->
-                                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                                    <nav aria-label="Table navigation">
-                                        <ul class="inline-flex items-center">
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
-                                                <svg aria-hidden="true" class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                                                    <path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                                                </svg>
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
-                                                    1
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
-                                                    2
-                                                </button>
-                                            </li>                                
-                                            <li>
-                                                <span class="px-3 py-1">...</span>
-                                            </li>
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
-                                                    6
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
-                                                    <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20"\>
-                                                        <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                                                    </svg>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </span>
-                            </div>
+                            @if($data->hasPages())
+                                {{ $data->links() }}
+                            @endif
                         </div>
                     </div>
                 </main>

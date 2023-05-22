@@ -12,5 +12,5 @@ class Team extends Model
     protected $table = 'teams';
     protected $primaryKey = 'id';
     protected $fillable = ['id', 'gambar', 'nama', 'posisi', 'divisi'];
-    protected $dates = ['created_at'];
+    protected $dates = ['created_at, update_at'];
 }

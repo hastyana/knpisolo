@@ -122,30 +122,35 @@
                                             <th class="px-4 py-3">Email</th>
                                             <th class="px-4 py-3">Isi</th>
                                             <th class="px-4 py-3">Tanggal</th>
-                                            <th class="px-4 py-3"></th>
-                                        </tr>
+                                            {{-- <th class="px-4 py-3"></th> --}}
+                                        </tr> 
                                     </thead>
                                     <tbody class="bg-white-fafafa divide-y">
+
+                                        @php $no=0; @endphp
+                                        @foreach ($data as $row)
+                                        @php $no++; @endphp
+
                                         <tr class="text-black-1E1E1E">
                                             <td class="px-4 py-3 text-sm">
-                                                
+                                                {{ $no }}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                                
+                                                <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->judul }}" class="w-16 h-16 object-cover rounded-full" />
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                                
+                                                {{ $row->nama }}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                                
+                                                {{ $row->email }}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                                
+                                                {{ strip_tags ($row->isi) }} 
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                                
+                                                {{ $row->created_at }}
                                             </td>
-                                            <td class="flex justify-center items-center gap-2 py-4 text-sm">
+                                            {{-- <td class="flex justify-center items-center gap-2 py-4 text-sm">
                                                 <a href="" class="bg-red-200 px-2 py-2 rounded-lg hover:opacity-70">
                                                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                                                         <g>
@@ -153,56 +158,17 @@
                                                         </g>
                                                     </svg>
                                                 </a>
-                                            </td>
+                                            </td> --}}
                                         </tr>
+
+                                        @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-black-1E1E1E uppercase border-t sm:grid-cols-9">
-                                <span class="flex items-center col-span-3">
-                                    Showing 21-30 of 100
-                                </span>
-                                <span class="col-span-2"></span>
-                                <!-- Pagination -->
-                                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                                    <nav aria-label="Table navigation">
-                                        <ul class="inline-flex items-center">
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
-                                                <svg aria-hidden="true" class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                                                    <path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                                                </svg>
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
-                                                    1
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
-                                                    2
-                                                </button>
-                                            </li>                                
-                                            <li>
-                                                <span class="px-3 py-1">...</span>
-                                            </li>
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
-                                                    6
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
-                                                    <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20"\>
-                                                        <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                                                    </svg>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </span>
-                            </div>
+                            @if($data->hasPages())
+                                {{ $data->links() }}
+                            @endif
                         </div>
                     </div>
                 </main>

@@ -12,5 +12,5 @@ class Infografis extends Model
     protected $table = 'infografis';
     protected $primaryKey = 'id';
     protected $fillable = ['id', 'gambar', 'kategori'];
-    protected $dates = ['created_at'];
+    protected $dates = ['created_at, update_at'];
 }

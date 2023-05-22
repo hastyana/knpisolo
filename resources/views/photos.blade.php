@@ -30,7 +30,7 @@
                     <div class="px-5 md:py-16 sm:py-24 py-16 relative z-10 w-full h-full border-gray-200 bg-black opacity-0 hover:opacity-80">
                         <h1 class="text-2xl font-bold text-white-fafafa m-2 text-center uppercase">{{ $row->judul }}</h1>
                         <p class="relative mt-4 font-roboto text-white-fafafa text-center font-light text-sm">            
-                            {{ $row->isi }}
+                            {{ Str::limit(strip_tags($row->isi, 150)) }}
                         </p>
                     </div>
                 </div>
@@ -39,37 +39,9 @@
             @endforeach
             
         </div>
-        {{-- <div class="flex justify-center pt-5">
-            <nav aria-label="Page navigation example">
-                <ul class="list-style-none flex">
-                    <li>
-                        <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"  href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white" href="#">
-                            1
-                        </a>
-                    </li>
-                    <li aria-current="page">
-                        <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white" href="#">
-                            2
-                        </a>
-                    </li>
-                    <li>
-                        <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white" href="#">
-                            3
-                        </a>
-                    </li>
-                    <li>
-                        <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div> --}}
+        @if($photos->hasPages())
+            {{ $photos->links() }}
+        @endif
     </section>
 
     {{ View::make('footer') }}

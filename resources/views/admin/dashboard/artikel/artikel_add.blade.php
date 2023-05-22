@@ -168,9 +168,18 @@ if(old()) {
                                     <textarea type="text" name="isi" id="isi" class="ckeditor block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer opacity-70"  required > {{ $isi }} </textarea>
                                 </div> 
                                 <div class="relative z-0 w-full mb-6 group">
+                                    <label class="block mb-2 text-sm font-medium text-black-1E1E1E" for="profil">Upload Profile</label>
+                                    <input class="block w-full text-sm text-black-1E1E1E border-0 border-b-2 border-gray-300 rounded-lg cursor-pointer focus:outline-none" id="profil" name="profil" type="file" required>
+                                    <p class="font-normal py-2 md:text-start text-red-600">
+                                        *upload dengan format .jpg, .jpeg, .png, .gif, dan .svg <br>
+                                        *max file size 2MB
+                                    </p>
+                                </div>
+                                <div class="relative z-0 w-full mb-6 group">
                                     <label class="block mb-2 text-sm font-medium text-black-1E1E1E" for="gambar">Upload Image</label>
                                     <input class="block w-full text-sm text-black-1E1E1E border-0 border-b-2 border-gray-300 rounded-lg cursor-pointer focus:outline-none" id="gambar" name="gambar" type="file" required>
                                     <p class="font-normal py-2 text-start text-red-600">
+                                        *upload dengan format .jpg, .jpeg, .png, .gif, dan .svg <br>
                                         *max file size 2MB
                                     </p>
                                 </div>

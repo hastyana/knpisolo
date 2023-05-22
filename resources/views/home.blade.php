@@ -14,7 +14,7 @@
     <title>Home - KNPI Solo</title>
 </head>
 
-<body class="bg-white-fafafa">
+<body class="bg-white-fafafa"> 
     {{ View::make('navbar') }}
 
     <header id="Header" class="overflow-hidden">
@@ -146,7 +146,7 @@
                         @foreach ($infografis as $row)
 
                         <div class="swiper-slide">
-                            <button class="block">
+                            <button data-modal-target="info" data-modal-toggle="info" type="button" onclick="toggleModal('info')" id="{{ $row->id }}" class="block">
                                 <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->kategori }}" class="h-64 w-full object-cover sm:h-80 lg:h-96 hover:opacity-50" />
                                 <svg class="w-10 h-10 -rotate-45 -mt-10 opacity-50" xmlns="http://www.w3.org/2000/svg" id="arrow-circle-down" viewBox="0 0 24 24">
                                     <path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12ZM14.535,6.293l3.586,3.586h0a3,3,0,0,1,0,4.243l-3.586,3.585-.025.024a1,1,0,1,1-1.389-1.438L16.414,13,6,13.007a1,1,0,1,1,0-2L16.413,11,13.121,7.707a1,1,0,1,1,1.414-1.414Z"/>
@@ -175,76 +175,28 @@
     <section id="News" class="py-20 duration-[1000ms] taos:opacity-0">
         <div class="container mx-auto py-0 flex justify-center">
             <div class="w-full py-0 px-5 md:px-10">
-                <h2 class="pb-4 xl:text-5xl lg:text-4xl md:text-3xl text-2xl text-center font-roboto font-extrabold text-black-1E1E1E">
-                    Headline
-                </h2>
-                <div class="grid xl:grid-cols-2 grid-rows-1 gap-2">
-                    <div>
+                <div class="grid gap-2">
+                    <div class="grid xl:grid-cols-2 grid-rows-1 gap-2">
 
-                        {{-- @foreach ($artikel as $row) --}}
+                        @foreach ($articles as $row)
 
-                        <div class="overflow-hidden shadow-xl p-5">
-                            {{-- <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->judul }}" class="w-full h-auto" /> --}}
-                            <img src={{ asset ('img/andrei-j-castanha-eOsY4sO0bD8-unsplash.jpg') }} alt="news" class="w-full h-auto">
-                            <div class="px-6 py-4 font-robotoserif text-black-1E1E1E">
-                                <h2 class="font-bold text-center text-4xl">
-                                    {{-- {{ $row->judul }} --}} 
-                                    Lorem ipsum dolor sit amet
-                                </h2>
-                                <p class="text-center text-base py-5">
-                                    {{-- {{ Str::limit($row->isi, 50) }} --}}
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, 
-                                    nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, 
-                                    nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                                </p>
-                                <p class="text-base font-bold">
-                                    {{-- by : {{ $row->penulis }} --}}
-                                    by : unknown
-                                </p>
-                                <div class="flex items-end">
-                                    <p class="text-base opacity-70">
-                                        {{-- {{ $row->created_at }} --}}
-                                        12/01/01
-                                    </p>
-                                    <p class="text-base opacity-70 px-5">
-                                        100K views
-                                    </p>
-                                </div>                                
-                                <div class="flex justify-end -mt-12">
-                                    <a href="" class="hover:opacity-50">
-                                        <svg class="w-10 h-10 -rotate-45" xmlns="http://www.w3.org/2000/svg" id="arrow-circle-down" viewBox="0 0 24 24">
-                                            <path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12ZM14.535,6.293l3.586,3.586h0a3,3,0,0,1,0,4.243l-3.586,3.585-.025.024a1,1,0,1,1-1.389-1.438L16.414,13,6,13.007a1,1,0,1,1,0-2L16.413,11,13.121,7.707a1,1,0,1,1,1.414-1.414Z"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- @endforeach --}}
-
-                    </div>
-                    <div class="grid xl:grid-rows-2 grid-rows-1 gap-2">
                         <div class="w-full h-auto">
-                            <div class="flex md:flex-row flex-col p-5 items-center justify-center overflow-hidden shadow-xl font-robotoserif text-black-1E1E1E">
-                                <img src={{ asset ('img/andrei-j-castanha-eOsY4sO0bD8-unsplash.jpg') }} alt="news" class="object-cover w-full h-96 md:h-auto md:w-48">
+                            <div class="flex md:flex-row flex-col p-5 items-center justify-center overflow-hidden shadow-xl border-t-2 border-blue-1081E8 font-robotoserif text-black-1E1E1E">
+                                <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->judul }}" class="object-cover w-full h-96 md:h-auto md:w-48">
                                 <div class="flex flex-col justify-between p-4 leading-normal">
-                                    <h2 class="text-2xl font-bold tracking-tight md:text-start text-center">Lorem Ipsum Dolor Sit Amet</h2>
+                                    <h2 class="text-2xl font-bold tracking-tight md:text-start text-center">{{ Str::limit($row->judul, 50) }}</h2>
                                     <p class="font-normal py-2 md:text-start text-center">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, 
-                                        nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, 
-                                        nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                                        {{ Str::limit(strip_tags($row->isi, 150)) }}
                                     </p>
                                     <p class="font-bold">
-                                        by : Unknown
+                                        by : {{ $row->penulis }}
                                     </p>
                                     <div class="flex items-end">
                                         <p class="text-base opacity-70">
-                                            Jan 1st, 2023
+                                            {{ $row->created_at }}
                                         </p>
                                         <p class="text-base opacity-70 px-5">
-                                            120K Views
+                                            
                                         </p>
                                     </div>                                
                                     <div class="flex justify-end -mt-12">
@@ -257,38 +209,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full h-auto">
-                            <div class="flex md:flex-row flex-col p-5 items-center justify-center overflow-hidden shadow-xl font-robotoserif text-black-1E1E1E">
-                                <img src={{ asset ('img/andrei-j-castanha-eOsY4sO0bD8-unsplash.jpg') }} alt="news" class="object-cover w-full h-96 md:h-auto md:w-48">
-                                <div class="flex flex-col justify-between p-4 leading-normal">
-                                    <h2 class="text-2xl font-bold tracking-tight md:text-start text-center">Lorem Ipsum Dolor Sit Amet</h2>
-                                    <p class="font-normal py-2 md:text-start text-center">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, 
-                                        nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, 
-                                        nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                                    </p>
-                                    <p class="font-bold">
-                                        by : Unknown
-                                    </p>
-                                    <div class="flex items-end">
-                                        <p class="text-base opacity-70">
-                                            Jan 1st, 2023
-                                        </p>
-                                        <p class="text-base opacity-70 px-5">
-                                            120K Views
-                                        </p>
-                                    </div>                                
-                                    <div class="flex justify-end -mt-12">
-                                        <a href="" class="hover:opacity-50">
-                                            <svg class="w-10 h-10 -rotate-45" xmlns="http://www.w3.org/2000/svg" id="arrow-circle-down" viewBox="0 0 24 24">
-                                                <path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12ZM14.535,6.293l3.586,3.586h0a3,3,0,0,1,0,4.243l-3.586,3.585-.025.024a1,1,0,1,1-1.389-1.438L16.414,13,6,13.007a1,1,0,1,1,0-2L16.413,11,13.121,7.707a1,1,0,1,1,1.414-1.414Z"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                        
+
+                        @endforeach
+
                     </div>
                 </div>
             </div>            
@@ -300,54 +223,26 @@
             <div class="w-full py-0 px-5 md:px-10">
                 <div class="swiper-container !overflow-hidden">
                     <div class="swiper-wrapper">
+
+                        @foreach ($testimonial as $row)
+
                         <div class="swiper-slide bg-white-fafafa p-8 w-1/2 rounded-xl shadow-lg border borde-b-2">
                             <div class="flex flex-col justify-center items-center gap-4">
-                                <img src={{ asset ('img/p1.jpg') }} alt="people" class="h-24 w-24 rounded-full object-cover"/>
-                                <div class="text-sm">
-                                <p class="font-semibold font-signika text-blue-1081E8 text-2xl">Michele</p>
+                                <img src="{{ asset ('storage/'.$row->gambar) }}" alt="people" class="h-24 w-24 rounded-full object-cover"/>
+                                <div class="text-sm text-center">
+                                <p class="font-semibold font-signika text-blue-1081E8 text-xl">{{ $row->nama }}</p>
+                                <p class="font-normal font-signika text-md">{{ $row->email }}</p>
                                 </div>
                             </div>              
                             <p class="relative mt-4 font-roboto text-black-1E1E1E text-center">
                                 <span class="text-xl">&ldquo;</span>              
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                                assumenda officiis sit amet itaque eveniet accusantium corporis
-                                tempora, soluta perspiciatis rerum, ratione animi nemo inventore
-                                repellat, commodi in esse quisquam.              
+                                {{ strip_tags ($row->isi) }}          
                                 <span class="text-xl">&rdquo;</span>
                             </p>
                         </div>
-                        <div class="swiper-slide bg-white-fafafa p-8 w-1/2 rounded-xl shadow-lg border borde-b-2">
-                            <div class="flex flex-col justify-center items-center gap-4">
-                                <img src={{ asset ('img/p1.jpg') }} alt="people" class="h-24 w-24 rounded-full object-cover"/>
-                                <div class="text-sm">
-                                <p class="font-semibold font-signika text-blue-1081E8 text-2xl">Michele</p>
-                                </div>
-                            </div>              
-                            <p class="relative mt-4 font-roboto text-black-1E1E1E text-center">
-                                <span class="text-xl">&ldquo;</span>              
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                                assumenda officiis sit amet itaque eveniet accusantium corporis
-                                tempora, soluta perspiciatis rerum, ratione animi nemo inventore
-                                repellat, commodi in esse quisquam.              
-                                <span class="text-xl">&rdquo;</span>
-                            </p>
-                        </div>
-                        <div class="swiper-slide bg-white-fafafa p-8 w-1/2 rounded-xl shadow-lg border borde-b-2">
-                            <div class="flex flex-col justify-center items-center gap-4">
-                                <img src={{ asset ('img/p1.jpg') }} alt="people" class="h-24 w-24 rounded-full object-cover"/>
-                                <div class="text-sm">
-                                <p class="font-semibold font-signika text-blue-1081E8 text-2xl">Michele</p>
-                                </div>
-                            </div>              
-                            <p class="relative mt-4 font-roboto text-black-1E1E1E text-center">
-                                <span class="text-xl">&ldquo;</span>              
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                                assumenda officiis sit amet itaque eveniet accusantium corporis
-                                tempora, soluta perspiciatis rerum, ratione animi nemo inventore
-                                repellat, commodi in esse quisquam.              
-                                <span class="text-xl">&rdquo;</span>
-                            </p>
-                        </div>
+
+                        @endforeach
+                        
                     </div>
                 </div>
                 <div class="flex justify-center items-center py-5">
@@ -370,6 +265,33 @@
     </section>
 
     {{ View::make('footer') }}
+
+    {{-- Modal --}}
+    <div id="info" tabindex="-1" aria-hidden="true" class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center">
+        <div class="relative w-auto my-6 mx-auto max-w-3xl">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow">
+                <!-- Modal header -->
+                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                    <button type="button" onclick="toggleModal('info')" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 space-y-6">
+
+                    @foreach ($infografis as $row)
+
+                        <img id="{{ $row->id }}" src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->kategori }}" class="h-auto w-auto object-cover" />
+                   
+                    @endforeach
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 {{-- Scrool Animate (TAOS) --}}
@@ -447,6 +369,16 @@
             }
         },
     })
+</script>
+
+{{-- Modal JS --}}
+<script>
+    function toggleModal(info){
+        document.getElementById(info).classList.toggle("hidden");
+        document.getElementById(info + "-backdrop").classList.toggle("hidden");
+        document.getElementById(info).classList.toggle("flex");
+        document.getElementById(info + "-backdrop").classList.toggle("flex");
+    }
 </script>
 
 </html>

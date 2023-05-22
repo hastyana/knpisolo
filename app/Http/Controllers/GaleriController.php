@@ -10,7 +10,8 @@ class GaleriController extends Controller
 {
     public function galeri () {
         $foto = Foto::all();
-        return view('admin/dashboard.galeri.galeri', compact(['foto']));
+        $data = Video::all();
+        return view('admin/dashboard.galeri.galeri', ['foto' => $foto, 'data' => $data]); 
     }
     public function fotocreate () {
         return view('admin/dashboard.galeri.foto_add');
@@ -75,16 +76,16 @@ class GaleriController extends Controller
 
             Session()->flash('alert-success', 'Data berhasil disimpan');
             // return redirect('dashboard/galeri/'.$data->id);
-            return redirect('dashboard/galeri-photo-add/');
+            return redirect('dashboard/galeri-video-add/');
         } catch (\Exception $e) {
             Session()->flash('alert-danger', $e->getMessage());
-            return redirect('dashboard/galeri-photo-add/')->withInput();
+            return redirect('dashboard/galeri-video-add/')->withInput();
         }
     }
-    public function videoshow () {
-        $data = Video::all();
-        return view('admin/dashboard.galeri.galeri', compact(['data']));
-    }
+    // public function videoshow () {
+    //     $data = Video::all();
+    //     return view('admin/dashboard.galeri.galeri', ['data' => $data]);
+    // }
     public function videodelete () {
         
     }

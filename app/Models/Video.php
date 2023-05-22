@@ -12,5 +12,5 @@ class Video extends Model
     protected $table = 'videos';
     protected $primaryKey = 'id';
     protected $fillable = ['id', 'judul', 'link'];
-    protected $dates = ['created_at'];
+    protected $dates = ['created_at, update_at'];
 }

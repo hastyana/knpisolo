@@ -41,6 +41,9 @@
                 <a class="xl:p-4 md:p-2 py-2 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="{{ url('/blog') }}">Blog</a>
             </li>
             <li>
+                <a class="xl:p-4 md:p-2 py-2 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="{{ url('/okp') }}">OKP</a>
+            </li>
+            <li>
                 <a class="xl:p-4 md:p-2 py-2 block no-underline opacity-50 duration-300 transform hover:opacity-100 hover:text-underline" href="{{ url('/contact') }}">Contact</a>
             </li>
         </ul>

@@ -12,7 +12,7 @@ class Foto extends Model
     protected $table = 'fotos';
     protected $primaryKey = 'id'; 
     protected $fillable = ['id', 'gambar', 'judul', 'isi'];
-    protected $dates = ['created_at'];
+    protected $dates = ['created_at', 'update_at'];
 
     // public function cariFoto($id) {
     //     $data = Foto::where('id', $id)->first();

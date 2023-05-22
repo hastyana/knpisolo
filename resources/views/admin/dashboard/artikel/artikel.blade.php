@@ -123,30 +123,36 @@
                                             <th class="px-4 py-3">Gambar</th>
                                             <th class="px-4 py-3">Judul</th>
                                             <th class="px-4 py-3">Penulis</th>
+                                            <th class="px-4 py-3">Profil</th>
                                             <th class="px-4 py-3">Kategori</th>
                                             <th class="px-4 py-3">Jenis</th>
                                             <th class="px-4 py-3">slug</th>
                                             <th class="px-4 py-3">Isi</th>
                                             <th class="px-4 py-3">Tanggal</th>
-                                            <th class="px-4 py-3"></th>
+                                            {{-- <th class="px-4 py-3"></th> --}}
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white-fafafa divide-y">
 
+                                        @php $no=0; @endphp
                                         @foreach ($data as $row)
+                                        @php $no++; @endphp
 
                                         <tr class="text-black-1E1E1E">
                                             <td class="px-4 py-3 text-sm">
-                                                {{ $row->id }}
+                                                {{ $no }}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                                <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->judul }}" class="w-32 h-16" />
+                                                <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->judul }}" class="w-32 h-28" />
                                             </td>
                                             <td class="px-4 py-3 text-sm">
                                                 {{ $row->judul }}
-                                            </td>
+                                            </td> 
                                             <td class="px-4 py-3 text-sm">
                                                 {{ $row->penulis }}
+                                            </td>
+                                            <td class="px-4 py-3 text-sm">
+                                                <img src="{{ asset ('storage/'.$row->profil) }}" alt="{{ $row->profil }}" title="{{ $row->judul }}" class="w-16 h-16 object-cover rounded-full" />
                                             </td>
                                             <td class="px-4 py-3 text-sm">
                                                 {{ $row->kategori }}
@@ -158,12 +164,12 @@
                                                 {{ $row->slug }}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                                {{ $row->isi }}
+                                                {{ Str::limit(strip_tags($row->isi, 150)) }}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
                                                 {{ $row->created_at }}
                                             </td>
-                                            <td class="flex justify-center items-center gap-2 py-4 text-sm">
+                                            {{-- <td class="flex justify-center items-center gap-2 py-4 text-sm">
                                                 <a href="" class="bg-yellow-200 px-2 py-2 rounded-lg hover:opacity-70">
                                                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24">
                                                         <path d="M18,19v4.7a4.968,4.968,0,0,0,1.879-1.164l2.656-2.658A4.954,4.954,0,0,0,23.7,18H19A1,1,0,0,0,18,19Z"/>
@@ -171,14 +177,16 @@
                                                         <path d="M24,4.952a4.087,4.087,0,0,1-1.08,1.962L11.586,18.243A5.961,5.961,0,0,1,7.343,20H6a2,2,0,0,1-2-2V16.657a5.957,5.957,0,0,1,1.758-4.242L17.086,1.086A4.078,4.078,0,0,1,19.037,0c-.013,0-.024,0-.037,0H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16V19a3,3,0,0,1,3-3h5V5C24,4.984,24,4.969,24,4.952Z"/>
                                                     </svg>
                                                 </a>
-                                                <a href="" class="bg-red-200 px-2 py-2 rounded-lg hover:opacity-70">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a href="artikel-delete/{{ $row->id }}" class="bg-red-200 px-2 py-2 rounded-lg hover:opacity-70">
                                                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                                                         <g>
                                                             <path d="M448,85.333h-66.133C371.66,35.703,328.002,0.064,277.333,0h-42.667c-50.669,0.064-94.327,35.703-104.533,85.333H64   c-11.782,0-21.333,9.551-21.333,21.333S52.218,128,64,128h21.333v277.333C85.404,464.214,133.119,511.93,192,512h128   c58.881-0.07,106.596-47.786,106.667-106.667V128H448c11.782,0,21.333-9.551,21.333-21.333S459.782,85.333,448,85.333z    M234.667,362.667c0,11.782-9.551,21.333-21.333,21.333C201.551,384,192,374.449,192,362.667v-128   c0-11.782,9.551-21.333,21.333-21.333c11.782,0,21.333,9.551,21.333,21.333V362.667z M320,362.667   c0,11.782-9.551,21.333-21.333,21.333c-11.782,0-21.333-9.551-21.333-21.333v-128c0-11.782,9.551-21.333,21.333-21.333   c11.782,0,21.333,9.551,21.333,21.333V362.667z M174.315,85.333c9.074-25.551,33.238-42.634,60.352-42.667h42.667   c27.114,0.033,51.278,17.116,60.352,42.667H174.315z"/>
                                                         </g>
                                                     </svg>
                                                 </a>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                         
                                         @endforeach
@@ -186,51 +194,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-black-1E1E1E uppercase border-t sm:grid-cols-9">
-                                <span class="flex items-center col-span-3">
-                                    Showing 21-30 of 100
-                                </span>
-                                <span class="col-span-2"></span>
-                                <!-- Pagination -->
-                                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                                    <nav aria-label="Table navigation">
-                                        <ul class="inline-flex items-center">
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
-                                                <svg aria-hidden="true" class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                                                    <path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                                                </svg>
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
-                                                    1
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
-                                                    2
-                                                </button>
-                                            </li>                                
-                                            <li>
-                                                <span class="px-3 py-1">...</span>
-                                            </li>
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
-                                                    6
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
-                                                    <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20"\>
-                                                        <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                                                    </svg>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </span>
-                            </div>
+                            @if($data->hasPages())
+                                {{ $data->links() }}
+                            @endif
                         </div>
                     </div>
                 </main>

@@ -37,14 +37,14 @@ class TeamController extends Controller
 
             Session()->flash('alert-success', 'Data berhasil disimpan');
             // return redirect('dashboard/galeri/'.$data->id);
-            return redirect('dashboard/team/');
+            return redirect('dashboard/team-add/');
         } catch (\Exception $e) {
             Session()->flash('alert-danger', $e->getMessage());
             return redirect('dashboard/team-add/')->withInput();
         }
     }
     public function show () {
-        $data = Team::all();
+        $data = Team::paginate(10);
         return view('admin/dashboard.team.team', compact(['data']));
     }
     public function update () {

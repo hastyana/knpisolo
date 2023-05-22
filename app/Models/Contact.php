@@ -11,6 +11,6 @@ class Contact extends Model
 
     protected $table = 'testimonis';
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'gambar', 'email', 'isi'];
-    protected $dates = ['created_at'];
+    protected $fillable = ['id', 'gambar', 'nama', 'email', 'isi'];
+    protected $dates = ['created_at, update_at'];
 }

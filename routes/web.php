@@ -16,6 +16,9 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PressController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\OkpController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -35,25 +38,29 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [PublicController::class, 'about']);
-Route::get('/about_all', function () {
-    return view('about_all');
-});
-Route::get('/about_struktur', function () {
-    return view('about_struktur');
-});
-Route::get('/about_visi', function () {
-    return view('about_visi');
-});
 Route::get('/photos', [PhotosController::class, 'index']);
 Route::get('/videos', [VideosController::class, 'index']);
 Route::get('/blog',[BlogController::class, 'index']);
+Route::get('/upload',[BlogController::class, 'upload']);
+Route::get('/upload',[BlogController::class, 'create']);
+Route::post('/upload',[BlogController::class, 'save']);
 Route::get('/news', [NewsController::class, 'index']);
 Route::get('/pers', [PressController::class, 'index']);
 Route::get('/article',[ArticleController::class, 'index']);
-Route::get('/contact', [PublicController::class, 'contact']);
-
-// Route::resource('/content', PublicController::class);
-
+Route::get('/contact', [ContactController::class, 'contact']);
+Route::get('/contact', [ContactController::class, 'create']);
+Route::post('/contact', [ContactController::class, 'save']);
+Route::get('/blog-post/{slug}', [BlogController::class, 'show']);
+Route::get('/news-post/{slug}', [NewsController::class, 'show']);
+Route::get('/article-post/{slug}', [ArticleController::class, 'show']);
+Route::get('/pers-post/{slug}', [PressController::class, 'show']);
+Route::get('/post', [PostController::class, 'index']);
+// Route::get('/post/{slug}', [PostController::class, 'show']);
+Route::get('/okp', [OkpController::class, 'index']);
+Route::get('/okp_add', [OkpController::class, 'okp_add']);
+Route::get('/okp_add', [OkpController::class, 'create']);
+Route::post('/okp_add', [OkpController::class, 'save']);
+ 
 Route::get('/login', function () {
     return view('auth/login');
 });
@@ -70,7 +77,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
         Route::get('/galeri-photo-delete/{id}', 'fotodelete');
         Route::get('/galeri-video-add', 'videocreate');
         Route::post('/galeri-video-add', 'videosave');
-        Route::get('/galeri-video', 'videoshow');
+        // Route::get('/galeri-video', 'videoshow');
         Route::post('/galeri-video/{id}', 'videoupdate');
         Route::get('/galeri-video-delete/{id}', 'videodelete');
     });
@@ -81,7 +88,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
         Route::post('/artikel-add', 'save');
         Route::get('/artikel', 'show');
         Route::post('/artikel-update/{id}', 'update');
-        Route::get('/artikel-delete/{id}', 'delete');
+        Route::delete('/artikel-delete/{id}', 'destroy');
     });
 
     Route::controller(InfografisController::class)->group (function () {
@@ -104,13 +111,16 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
 
     Route::controller(TestimonialController::class)->group (function () {
         Route::get('/testimonial', 'testimonial');
-        Route::get('/testimonial', 'show');
+        Route::get('/testimonial', 'index');
         Route::get('/testimonial-delete/{id}', 'delete');
     });
 
     Route::controller(CopywritingController::class)->group (function () {
         Route::get('/copywriting', 'copywriting');
-        Route::get('/copywriting', 'show');
+        Route::get('/copywriting', 'index');
+        Route::get('/profil', 'profil');
+        Route::get('/image', 'image');
+        Route::get('/file', 'file');
         Route::get('/copywriting-delete/{id}', 'delete');
     });
 
