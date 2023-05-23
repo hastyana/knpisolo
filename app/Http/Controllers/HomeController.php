@@ -8,13 +8,20 @@ use App\Models\Infografis;
 use App\Models\Testimonial;
 
 
-class HomeController extends Controller
+class HomeController extends Controller 
 {
     public function index() {
         $infografis = Infografis::all();
         $articles = Artikel::latest()->paginate(4);
         $testimonial = Testimonial::all();
         return view('home', ['infografis' => $infografis, 'articles' => $articles, 'testimonial' => $testimonial]);
+    }
+
+    public function show($slug) 
+    {
+        $post = Artikel::where('slug', $slug)->firstOrFail();
+        // dd($post);
+        return view('home-post', ['post' => $post]);
     }
 
     public function show_infografis(Request $request,$id)

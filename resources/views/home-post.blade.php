@@ -27,9 +27,10 @@
                             </div>
                             <img class="md:w-auto md:h-480p w-full h-auto items-center justify-center" src="{{ asset ('storage/'.$post->gambar) }}" alt="{{ $post->gambar }}" title="{{ $post->judul }}">
                             <div class="px-6 py-4 font-robotoserif text-black-1E1E1E">
-                                <p class="text-lg py-5">
+                                <div class="text-lg py-5">
+                                    {{-- {{  strip_tags($post->isi)  }} --}}
                                     {!! $post->isi !!}
-                                </p>
+                                </div>
                                 <div class="flex justify-between">
                                     <p class="text-base font-bold">
                                         by : {{ $post->penulis }}

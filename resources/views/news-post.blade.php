@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
     @vite('resources/css/app.css')
     @vite('resources/css/app2.css')
     <link rel="icon" href="{{ asset ('img/logo.png') }}">
@@ -27,7 +28,7 @@
                             <img class="md:w-auto md:h-480p w-full h-auto items-center justify-center" src="{{ asset ('storage/'.$post->gambar) }}" alt="{{ $post->gambar }}" title="{{ $post->judul }}">
                             <div class="px-6 py-4 font-robotoserif text-black-1E1E1E">
                                 <p class="text-lg py-5">
-                                    {{ strip_tags($post->isi) }}
+                                    {!! $post->isi !!}
                                 </p>
                                 <div class="flex justify-between">
                                     <p class="text-base font-bold">

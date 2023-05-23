@@ -37,8 +37,10 @@ use Illuminate\Support\Facades\Route;
 require __DIR__.'/auth.php';
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/home-post/{slug}', [HomeController::class, 'show']);
 Route::get('/about', [PublicController::class, 'about']);
 Route::get('/photos', [PhotosController::class, 'index']);
+Route::get('/photos-filter/{kategori}', [PhotosController::class, 'show']);
 Route::get('/videos', [VideosController::class, 'index']);
 Route::get('/blog',[BlogController::class, 'index']);
 Route::get('/upload',[BlogController::class, 'upload']);
@@ -71,6 +73,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
     Route::controller(GaleriController::class)->group (function () {
         Route::get('/galeri', 'galeri');
         Route::get('/galeri-photo-add', 'fotocreate');
+        Route::get('/galeri-photo-add', 'kategorilist');
         Route::post('/galeri-photo-add', 'fotosave');
         Route::get('/galeri-photo', 'fotoshow');
         Route::post('/galeri-photo/{id}', 'fotoupdate');
@@ -80,6 +83,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
         // Route::get('/galeri-video', 'videoshow');
         Route::post('/galeri-video/{id}', 'videoupdate');
         Route::get('/galeri-video-delete/{id}', 'videodelete');
+        Route::get('/galeri-category', 'kategoricreate');
+        Route::post('/galeri-category', 'kategorisave');
     });
 
     Route::controller(ArtikelController::class)->group (function () {
@@ -89,6 +94,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
         Route::get('/artikel', 'show');
         Route::post('/artikel-update/{id}', 'update');
         Route::delete('/artikel-delete/{id}', 'destroy');
+        // Route::get('/artikel-category', 'kategori');
+        // Route::get('/artikel-category-add', 'kategoricreate');
+        // Route::post('/artikel-category-add', 'kategorisave');
     });
 
     Route::controller(InfografisController::class)->group (function () {

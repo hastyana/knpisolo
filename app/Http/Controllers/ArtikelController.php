@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Artikel;
+use App\Models\BlogCategory;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ArtikelController extends Controller
 {
+    // Articles
     public function artikel () {
         return view('admin/dashboard.artikel.artikel');
     }
@@ -51,6 +53,7 @@ class ArtikelController extends Controller
             $data->kategori = $request->kategori;
             $data->jenis = $request->jenis;
             $data->isi = $request->isi;
+            // $data->isi = $request->input('isi');
             $data->gambar = $path;
             $data->profil = $propath;
             $data->save();
@@ -94,4 +97,31 @@ class ArtikelController extends Controller
     //     $delete->delete();
     //     return back();
     // }
+
+    // Categories
+    public function kategori () {
+        $kategori = BlogCategory::all();
+        return view('admin/dashboard.artikel.kategori_add', ['kategori' => $kategori]); 
+    }
+    public function kategoricreate () {
+        return view('admin/dashboard.artikel.kategori_add');
+    }
+    public function kategorisave (Request $request) {
+        $this->validate($request, [
+            'kategori' => 'required',
+        ]);
+
+        try {
+            $data = new BlogCategory;
+            $data->kategori = $request->kategori;
+            $data->save();
+
+            Session()->flash('alert-success', 'Data berhasil disimpan');
+            // return redirect('dashboard/galeri/'.$data->id);
+            return redirect('dashboard/category-add/');
+        } catch (\Exception $e) {
+            Session()->flash('alert-danger', $e->getMessage());
+            return redirect('dashboard/category-add/')->withInput();
+        }
+    }
 }

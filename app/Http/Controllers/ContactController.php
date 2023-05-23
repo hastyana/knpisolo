@@ -31,7 +31,7 @@ class ContactController extends Controller
             $data = new Contact;
             $data->nama = $request->nama;
             $data->email = $request->email;
-            $data->isi = $request->isi;
+            $data->isi = $request->input('isi');
             $data->gambar = $path;
             $data->save();
 

@@ -28,7 +28,7 @@ if(old()) {
         <link rel="icon" href="{{ asset ('img/logo.png') }}">
         <title>Dashboard - Artikel</title>
         @vite('resources/css/app.css', 'resources/css/admin.css', 'resources/js/charts-bars.js', 'resources/js/charts-lines.js', 'resources/js/charts-pie.js', 'resources/js/focus-trap.js', 'resources/js/init-alpine.js')
-        <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+        <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
@@ -165,7 +165,7 @@ if(old()) {
                                 </div>
                                 <div class="relative z-0 w-full mb-6 group">
                                     <label for="isi" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -mt-2 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Isi</label>
-                                    <textarea type="text" name="isi" id="isi" class="ckeditor block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer opacity-70"  required > {{ $isi }} </textarea>
+                                    <textarea type="text" name="isi" id="isi" class="ckeditor block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer opacity-70"  required > {!! $isi !!} </textarea>
                                 </div> 
                                 <div class="relative z-0 w-full mb-6 group">
                                     <label class="block mb-2 text-sm font-medium text-black-1E1E1E" for="profil">Upload Profile</label>
@@ -197,12 +197,14 @@ if(old()) {
 
     {{-- Textarea Editor --}}
     <script>
-        ClassicEditor
-            .create( document.querySelector( '#isi' ) )
-            .catch( error => {
-                console.error( error );
-            } );
+        CKEDITOR.replace( 'editor' );
     </script>
+    {{-- <script>
+        CKEDITOR.replace( 'isi', {
+            filebrowserUploadUrl: "{{route('upload/artikel/image', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script> --}}
     
     {{-- confirmsubmit --}}
     <script>

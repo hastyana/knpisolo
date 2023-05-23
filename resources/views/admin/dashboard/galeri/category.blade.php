@@ -6,10 +6,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="{{ asset ('img/logo.png') }}">
-        <title>Dashboard</title>
+        <title>Dashboard - Galeri</title>
         @vite('resources/css/app.css', 'resources/css/admin.css', 'resources/js/charts-bars.js', 'resources/js/charts-lines.js', 'resources/js/charts-pie.js', 'resources/js/focus-trap.js', 'resources/js/init-alpine.js')
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-        <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css"  rel="stylesheet" />
@@ -40,7 +39,8 @@
                     </ul>
                     <ul>
                         <li class="relative px-6 py-3">
-                            <a class="inline-flex items-center w-full text-sm font-semibold text-black-1E1E1E opacity-70 transition-colors duration-150 hover:opacity-100" href="{{ url('/dashboard/galeri') }}" >
+                            <span class="absolute inset-y-0 left-0 w-1 bg-blue-56A5ED rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+                            <a class="inline-flex items-center w-full text-sm font-semibold text-black-1E1E1E transition-colors duration-150" href="{{ url('/dashboard/galeri') }}">
                                 <svg class="w-5 h-5 opacity-70 hover:opacity-100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                                     <g>
                                         <path d="M42.667,0h234.667C300.897,0,320,19.103,320,42.667V192c0,23.564-19.103,42.667-42.667,42.667H42.667   C19.103,234.667,0,215.564,0,192V42.667C0,19.103,19.103,0,42.667,0z"/>
@@ -70,7 +70,7 @@
                             </a>
                         </li>
                         <li class="relative px-6 py-3">
-                            <a class="inline-flex items-center w-full text-sm font-semibold text-black-1E1E1E opacity-70 transition-colors duration-150 hover:opacity-100" href="{{ url('/dashboard/team') }}">
+                            <a class="inline-flex items-center w-full text-sm font-semibold text-black-1E1E1E opacity-70 transition-colors duration-150 hover:opacity-100" href="{{ url('/dashboard/team') }}" >
                                 <svg class="w-5 h-5 opacity-70 hover:opacity-100" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
                                     <path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16ZM5.683,16H1a1,1,0,0,1-1-1A6.022,6.022,0,0,1,5.131,9.084a1,1,0,0,1,1.1,1.266A6.009,6.009,0,0,0,6,12a5.937,5.937,0,0,0,.586,2.57,1,1,0,0,1-.9,1.43ZM17,24H7a1,1,0,0,1-1-1,6,6,0,0,1,12,0A1,1,0,0,1,17,24ZM18,8a4,4,0,1,1,4-4A4,4,0,0,1,18,8ZM6,8a4,4,0,1,1,4-4A4,4,0,0,1,6,8Zm17,8H18.317a1,1,0,0,1-.9-1.43A5.937,5.937,0,0,0,18,12a6.009,6.009,0,0,0-.236-1.65,1,1,0,0,1,1.105-1.266A6.022,6.022,0,0,1,24,15,1,1,0,0,1,23,16Z"/>
                                 </svg>
@@ -78,8 +78,7 @@
                             </a>
                         </li>
                         <li class="relative px-6 py-3">
-                            <span class="absolute inset-y-0 left-0 w-1 bg-blue-56A5ED rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
-                            <a class="inline-flex items-center w-full text-sm font-semibold text-black-1E1E1E transition-colors duration-150" href="{{ url('/dashboard/testimonial') }}">
+                            <a class="inline-flex items-center w-full text-sm font-semibold text-black-1E1E1E opacity-70 transition-colors duration-150 hover:opacity-100" href="{{ url('/dashboard/testimonial') }}">
                                 <svg class="w-5 h-5 opacity-70 hover:opacity-100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                                     <path d="M256,169.515c17.944,0,32.491-14.547,32.491-32.491S273.944,104.533,256,104.533s-32.491,14.547-32.491,32.491  S238.056,169.515,256,169.515z"/>
                                     <path d="M426.667,0.016H85.333C37.894,0.391-0.284,39.104,0,86.544V346.17c-0.284,47.443,37.891,86.162,85.333,86.549h62.357  l79.957,68.267c15.838,14.474,40.039,14.686,56.128,0.491l82.027-68.779h60.864c47.442-0.387,85.617-39.106,85.333-86.549V86.544  C512.284,39.104,474.106,0.391,426.667,0.016z M256,64.912c98.453,2.603,98.432,148.843,0,151.467  C157.547,213.754,157.568,67.578,256,64.912z M346.645,367.12c-11.416,2.913-23.032-3.981-25.945-15.397  c-0.013-0.052-0.026-0.103-0.039-0.155c-10.919-35.717-48.726-55.82-84.443-44.901c-21.5,6.573-38.328,23.401-44.901,44.901  c-2.981,11.405-14.643,18.234-26.048,15.253c-11.405-2.981-18.234-14.643-15.253-26.048l0,0  c16.496-58.539,77.324-92.622,135.863-76.126c36.895,10.397,65.729,39.231,76.126,76.126  C364.975,352.281,358.123,364.034,346.645,367.12z"/>
@@ -98,79 +97,51 @@
                                 <span class="ml-4">Kiriman User</span>
                             </a>
                         </li>
-                    </ul> 
+                    </ul>
                 </div>
             </aside>
             <div class="flex flex-col flex-1 w-full">
                 {{ View::make('admin/topbar') }}
-
+ 
                 <main class="h-full overflow-y-auto">
                     <div class="container px-6 mx-auto grid">
                         <div class="flex justify-between items-center">
                             <h2 class="my-6 text-2xl font-semibold text-black-1E1E1E">
-                                Testimoni
+                                Kategori
                             </h2>
+                            <a type="button" href="{{ url('/dashboard/galeri') }}" class="focus:outline-none text-white-fafafa bg-yellow-400 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2">
+                                < <span class="px-2"> | </span> Kembali
+                            </a>
                         </div>                      
-                        <!-- New Table -->
-                        <div class="w-full overflow-hidden rounded-lg shadow-xs">
-                            <div class="w-full overflow-x-auto">
-                                <table class="w-full whitespace-no-wrap">
-                                    <thead>
-                                        <tr class="text-xs font-semibold tracking-wide text-left text-black-1E1E1E uppercase border-b">
-                                            <th class="px-4 py-3">No</th>
-                                            <th class="px-4 py-3">Profile</th>
-                                            <th class="px-4 py-3">Nama</th>
-                                            <th class="px-4 py-3">Email</th>
-                                            <th class="px-4 py-3">Isi</th>
-                                            <th class="px-4 py-3">Tanggal</th>
-                                            {{-- <th class="px-4 py-3"></th> --}}
-                                        </tr> 
-                                    </thead>
-                                    <tbody class="bg-white-fafafa divide-y">
 
-                                        @php $no=0; @endphp
-                                        @foreach ($data as $row)
-                                        @php $no++; @endphp
+                        <?php
 
-                                        <tr class="text-black-1E1E1E">
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $no }}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->judul }}" class="w-16 h-16 object-cover rounded-full" />
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->nama }}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->email }}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ strip_tags ($row->isi) }} 
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->created_at }}
-                                            </td>
-                                            {{-- <td class="flex justify-center items-center gap-2 py-4 text-sm">
-                                                <a href="" class="bg-red-200 px-2 py-2 rounded-lg hover:opacity-70">
-                                                    <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                                                        <g>
-                                                            <path d="M448,85.333h-66.133C371.66,35.703,328.002,0.064,277.333,0h-42.667c-50.669,0.064-94.327,35.703-104.533,85.333H64   c-11.782,0-21.333,9.551-21.333,21.333S52.218,128,64,128h21.333v277.333C85.404,464.214,133.119,511.93,192,512h128   c58.881-0.07,106.596-47.786,106.667-106.667V128H448c11.782,0,21.333-9.551,21.333-21.333S459.782,85.333,448,85.333z    M234.667,362.667c0,11.782-9.551,21.333-21.333,21.333C201.551,384,192,374.449,192,362.667v-128   c0-11.782,9.551-21.333,21.333-21.333c11.782,0,21.333,9.551,21.333,21.333V362.667z M320,362.667   c0,11.782-9.551,21.333-21.333,21.333c-11.782,0-21.333-9.551-21.333-21.333v-128c0-11.782,9.551-21.333,21.333-21.333   c11.782,0,21.333,9.551,21.333,21.333V362.667z M174.315,85.333c9.074-25.551,33.238-42.634,60.352-42.667h42.667   c27.114,0.033,51.278,17.116,60.352,42.667H174.315z"/>
-                                                        </g>
-                                                    </svg>
-                                                </a>
-                                            </td> --}}
-                                        </tr>
+                        if(old()) {
+                            $kategori = old('kategori');
+                        } else {
+                            $kategori = null;
+                        }
 
-                                        @endforeach
+                        ?> 
 
-                                    </tbody>
-                                </table>
-                            </div>
-                            @if($data->hasPages())
-                                {{ $data->links() }}
-                            @endif
-                        </div>
+                        <div class="w-full overflow-hidden rounded-lg shadow-xs py-10">
+
+                            @include('errors.message')
+
+                            <form class="py-3 font-roboto px-5" method="POST" action="{{ url('/dashboard/galeri-category') }}" onsubmit="return confirmSubmit()" enctype="multipart/form-data">
+                                
+                                @csrf                                
+                                
+                                <div class="relative z-0 w-full mb-6 group">
+                                    <input type="text" name="kategori" id="kategori" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ $kategori }}" required />
+                                    <label for="kategori" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Kategori</label>
+                                </div>
+                                <button type="submit" class="focus:outline-none text-white-fafafa bg-green-400 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2">
+                                    Tambah
+                                </button>
+                                
+                            </form>
+                        </div>                         
                     </div>
                 </main>
             </div>            

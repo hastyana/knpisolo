@@ -11,11 +11,10 @@ class Foto extends Model
 
     protected $table = 'fotos';
     protected $primaryKey = 'id'; 
-    protected $fillable = ['id', 'gambar', 'judul', 'isi'];
+    protected $fillable = ['id', 'gambar', 'foto_category_id', 'kategori', 'judul', 'isi'];
     protected $dates = ['created_at', 'update_at'];
 
-    // public function cariFoto($id) {
-    //     $data = Foto::where('id', $id)->first();
-    //     return $data;
-    // }
+    public function fotocategory(){
+    	return $this->belongsTo('App\Models\FotoCategory');
+    }
 }

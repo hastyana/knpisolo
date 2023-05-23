@@ -68,45 +68,20 @@
 
     <section id="photos" class="pb-20 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0">
         <div class="container mx-auto py-0 ">
-            <div class="swiper-container !overflow-hidden pb-10">
-                <div class="swiper-wrapper">
-    
-                    @foreach ($menu as $row)
-    
-                    <div class="swiper-slide w-1/12">
-                        <div class="flex items-center w-auto">
-                            <ul class="py-2 flex justify-between text-base text-black-1E1E1E font-roboto font-normal">
-                                <li>
-                                    <a class="py-1 px-4 block no-underline opacity-100 duration-300 transform hover:opacity-50 hover:text-underline" href="{{ url ('photos-filter', $row->foto->kategori) }}">
-                                        {{  $row->kategori  }}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-    
-                    @endforeach
-                    
-                </div>
-            </div>
                 
             <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-center">
-                
-                @foreach ($all as $row)
     
                 <article class="group px-2 py-4">
-                    <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title={{ $row->judul }} class="h-56 w-full object-cover" >
+                    <img src="{{ asset ('storage/'.$kategoris->gambar) }}" alt="{{ $kategoris->gambar }}" title={{ $kategoris->judul }} class="h-56 w-full object-cover" >
                     <div class="p-4 bg-gray-100 border-b-2 border-black-1E1E1E">
                         <h3 class="text-lg font-medium text-gray-900">
-                            {{  $row->judul  }}
+                            {{  $kategoris->judul  }}
                         </h3>              
                         <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                            {!! $row->isi !!}
+                            {!! $kategoris->isi !!}
                         </p>
                     </div>
                 </article>
-    
-                @endforeach
                 
             </div>
         </div>        
@@ -115,31 +90,6 @@
         @endif
     </section>
 
-    {{-- <section id="photos" class="py-20 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0">        
-        <div class="container mx-auto py-0 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-center">
-            
-            @foreach ($all as $row)
-
-            <div class="w-full py-2 px-2">
-                <div class="flex relative">
-                    <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->judul }}" class="absolute inset-0 object-cover object-center w-full h-full" />
-                    <div class="px-5 md:py-16 sm:py-24 py-16 relative z-10 w-full h-full border-gray-200 bg-black opacity-0 hover:opacity-80">
-                        <h1 class="text-2xl font-bold text-white-fafafa m-2 text-center uppercase">{{ $row->judul }}</h1>
-                        <p class="relative mt-4 font-roboto text-white-fafafa text-center font-light text-sm">            
-                            {{ Str::limit(strip_tags($row->isi, 150)) }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            @endforeach
-            
-        </div>
-        @if($all->hasPages())
-            {{ $all->links() }}
-        @endif
-    </section> --}}
-
     {{ View::make('footer') }}
 </body>
 {{-- Scrool Animate (TAOS) --}}
@@ -147,35 +97,6 @@
 <script>
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-te-toggle="popover"]'));
     popoverTriggerList.map((popoverTriggerEl) => new te.Popover(popoverTriggerEl));
-</script>
-{{-- Photos Swiper --}}
-<script>
-    new Swiper('.swiper', {
-        loop: true,
-        spaceBetween: 24,
-        slidesPerView: 1,
-        autoplay: {
-            delay: 3000,
-        },
-        navigation: {
-        nextEl: '.next-button',
-        prevEl: '.prev-button',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-                centeredSlides: true,
-            },
-            1024: {
-                slidesPerView: 1.05,
-                centeredSlides: false,
-            }
-        },
-    })
 </script>
 {{-- Filter Swiper --}}
 <script>

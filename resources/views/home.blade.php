@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- Slider --}}
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script>document.documentElement.classList.add('js')</script>
     @vite('resources/css/app.css')
@@ -200,7 +201,7 @@
                                         </p>
                                     </div>                                
                                     <div class="flex justify-end -mt-12">
-                                        <a href="" class="hover:opacity-50">
+                                        <a href="{{ url ('home-post', $row->slug) }}" class="hover:opacity-50">
                                             <svg class="w-10 h-10 -rotate-45" xmlns="http://www.w3.org/2000/svg" id="arrow-circle-down" viewBox="0 0 24 24">
                                                 <path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12ZM14.535,6.293l3.586,3.586h0a3,3,0,0,1,0,4.243l-3.586,3.585-.025.024a1,1,0,1,1-1.389-1.438L16.414,13,6,13.007a1,1,0,1,1,0-2L16.413,11,13.121,7.707a1,1,0,1,1,1.414-1.414Z"/>
                                             </svg>

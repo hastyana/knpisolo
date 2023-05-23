@@ -19,7 +19,7 @@ if(old()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
     @vite('resources/css/app.css')
     <link rel="icon" href="{{ asset ('img/logo.png') }}">
     <title>Kontak - KNPI Solo</title>
@@ -179,12 +179,14 @@ if(old()) {
 <script src="https://unpkg.com/taos@1.0.3/dist/taos.js"></script>
 {{-- Textarea Editor --}}
 <script>
-    ClassicEditor
-        .create( document.querySelector( '#isi' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+    CKEDITOR.replace( 'editor' );
 </script>
+{{-- <script>
+    CKEDITOR.replace( 'isi', {
+        filebrowserUploadUrl: "{{route('upload/testimonial', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+</script> --}}
 
 {{-- confirmsubmit --}}
 <script>

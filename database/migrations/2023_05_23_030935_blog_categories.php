@@ -6,18 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('fotos', function (Blueprint $table) {
+        Schema::create('blog_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('gambar')->nullable();
-            $table->string('judul');
-            $table->string('foto_category_id'); 
-            $table->string('kategori'); 
-            $table->string('isi');
+            $table->string('kategori');
             $table->timestamps();
         });
     }
@@ -27,6 +20,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fotos');
+        Schema::dropIfExists('blog_categories');
     }
 };

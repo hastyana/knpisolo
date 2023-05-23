@@ -11,7 +11,7 @@ class Artikel extends Model
  
     protected $table = 'artikels';
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'gambar', 'profil', 'judul', 'slug', 'penulis', 'kategori', 'jenis', 'isi'];
+    protected $fillable = ['id', 'gambar', 'profil', 'judul', 'slug', 'penulis', 'artikel_category_id', 'kategori', 'jenis', 'isi'];
     protected $dates = ['created_at, update_at'];
 
     public function sluggable(): array
@@ -21,5 +21,9 @@ class Artikel extends Model
                 'source' => 'judul'
             ]
         ];
+    }
+
+    public function blogcategory(){
+    	return $this->belongsTo('App\Models\BlogCategory');
     }
 }
