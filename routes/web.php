@@ -40,7 +40,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/home-post/{slug}', [HomeController::class, 'show']);
 Route::get('/about', [PublicController::class, 'about']);
 Route::get('/photos', [PhotosController::class, 'index']);
-Route::get('/photos-filter/{kategori}', [PhotosController::class, 'show']);
+Route::get('/photos-filter/{kategori:kategori}', [PhotosController::class, 'show']);
 Route::get('/videos', [VideosController::class, 'index']);
 Route::get('/blog',[BlogController::class, 'index']);
 Route::get('/upload',[BlogController::class, 'upload']);
@@ -72,9 +72,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
 
     Route::controller(GaleriController::class)->group (function () {
         Route::get('/galeri', 'galeri');
-        Route::get('/galeri-photo-add', 'fotocreate');
+        // Route::get('/galeri-photo-add', 'fotocreate');
         Route::get('/galeri-photo-add', 'kategorilist');
-        Route::post('/galeri-photo-add', 'fotosave');
+        Route::post('/galeri-photo-add', 'fotosave')->name('post.galeri.foto');
         Route::get('/galeri-photo', 'fotoshow');
         Route::post('/galeri-photo/{id}', 'fotoupdate');
         Route::get('/galeri-photo-delete/{id}', 'fotodelete');

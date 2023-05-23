@@ -77,7 +77,7 @@
                         <div class="flex items-center w-auto">
                             <ul class="py-2 flex justify-between text-base text-black-1E1E1E font-roboto font-normal">
                                 <li>
-                                    <a class="py-1 px-4 block no-underline opacity-100 duration-300 transform hover:opacity-50 hover:text-underline" href="{{ url ('photos-filter', $row->foto->kategori) }}">
+                                    <a class="py-1 px-4 block no-underline opacity-100 duration-300 transform hover:opacity-50 hover:text-underline" href="{{ url ('photos-filter', $row->kategori) }}">
                                         {{  $row->kategori  }}
                                     </a>
                                 </li>

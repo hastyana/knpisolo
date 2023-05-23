@@ -2,15 +2,15 @@
 
 <?php
 
-if(old()) {
-    $judul = old('judul');
-    $isi = old('isi');
-    $kategori = old('kategori');
-} else {
-    $judul = null;
-    $isi = null;
-    $kategori=$kategori;
-}
+// if(old()) {
+//     $judul = old('judul');
+//     $isi = old('isi');
+//     $kategori = old('kategori');
+// } else {
+//     $judul = null;
+//     $isi = null;
+//     $kategori=$kategori;
+// }
 
 ?> 
 
@@ -133,25 +133,26 @@ if(old()) {
 
                             @include('errors.message')
 
-                            <form class="py-3 font-roboto px-5" method="POST" action="{{ url('/dashboard/galeri-photo-add') }}" onsubmit="return confirmSubmit()" enctype="multipart/form-data">
+                            <form class="py-3 font-roboto px-5" method="POST" action="{{ route('post.galeri.foto') }}" onsubmit="return confirmSubmit()" enctype="multipart/form-data">
                                 
                                 @csrf
                                 
                                 <div class="relative z-0 w-full mb-6 group">
-                                    <input type="text" name="judul" id="judul" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ $judul }}" required />
+                                    <input type="text" name="judul" id="judul" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ old('judul') }}" required />
                                     <label for="judul" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Judul</label>
+                                    
                                 </div>
                                 <div class="relative z-0 w-full mb-6 group">
                                     <select name="kategori" id="kategori" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer">
                                         <option value="">-- Pilih --</option>
                                         @foreach ($kategori as $row)
-                                            <option value="{{ $row->kategori }}">{{ $row->kategori }}</option>
+                                            <option value="{{ $row->id }}" {{ old('kategori') == $row->id ? 'selected' : '' }}>{{ $row->kategori }}</option>
                                         @endforeach
                                     </select>
                                     <label for="judul" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Kategori</label>
                                 </div>
                                 <div class="relative z-0 w-full mb-6 group">
-                                    <textarea type="text" name="isi" id="isi" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer ckeditor" required > {{ $isi }} </textarea>
+                                    <textarea type="text" name="isi" id="isi" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer ckeditor" required > {{ old('isi') }} </textarea>
                                     <label for="isi" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -mt-3 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Konten</label>
                                 </div>
                                 <div class="relative z-0 w-full mb-6 group">
