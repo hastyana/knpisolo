@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class FotoCategory extends Model
 {
-    use HasFactory;
+    use HasFactory; 
     
     protected $table = 'foto_categories';
     protected $primaryKey = 'id';

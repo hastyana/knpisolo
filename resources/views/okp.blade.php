@@ -16,9 +16,9 @@
         <div class="container mx-auto py-0 flex justify-center">
             <div class="w-full py-0 px-5 md:px-10">
                 <div class="border-b-2 border-black-1E1E1E">
-                    <h2 class="xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-robotoserif font-extrabold text-black-1E1E1E text-center">
+                    <h2 class="xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-roboto font-extrabold text-black-1E1E1E">
                         OKP Kota Surakarta
-                    </h2>
+                    </h2> 
                 </div>                
                 <p class="text-base font-roboto font-medium text-black-1E1E1E py-3">
                     OKP adalah singkatan dari Organisasi Kemasyarakatan dan Pemuda yaitu sebuah organisasi 

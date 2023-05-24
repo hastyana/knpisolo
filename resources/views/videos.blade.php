@@ -11,12 +11,20 @@
 <body class="bg-white-fafafa">
     {{ View::make('navbar') }}
 
-    <header id="header" class="overflow-hidden">
-        <div class="relative">
-            <img src={{ asset ('img/manahan.png') }} alt="background" class="w-full h-80 object-cover mt-0 bg-center bg-no-repeat">
-            <h1 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 xl:text-5xl lg:text-4xl md:text-3xl text-2xl text-center font-roboto font-extrabold text-white-fafafa">
-                Video</h1>
-        </div>        
+    <header id="header" class="overflow-hidden pt-10">
+        <div class="container mx-auto py-0">
+            <div class="w-full py-0 px-5 md:px-10 border-b-2 border-black-1E1E1E">
+                <h2 class="xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-roboto font-extrabold text-black-1E1E1E">
+                    Galeri Video
+                </h2>
+                <p class="font-roboto text-lg font-medium capitalize text-black-1E1E1E break-words py-3">
+                    Dokumentasi kegiatan audio visual yang dilaksanakan oleh DPD KNPI Kota Surakarta selama satu periode, dapat juga ditonton di kanal youtube
+                    <a href="https://www.youtube.com/@solocreativityspace8621" target="_blank" class="hover:text-blue-600 duration-200 font-bold">
+                        Solo Creativity Space
+                    </a>
+                </p>
+            </div> 
+        </div>
     </header>
 
     <section id="Videos" class="py-20 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0">        

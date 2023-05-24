@@ -14,22 +14,22 @@ class GaleriController extends Controller
         $foto = Foto::paginate(10);
         $data = Video::paginate(5);
         $kategori = FotoCategory::paginate(5);
-        return view('admin/dashboard.galeri.galeri', ['foto' => $foto, 'data' => $data, 'kategori' => $kategori]); 
+        return view('admin.dashboard.galeri.galeri', ['foto' => $foto, 'data' => $data, 'kategori' => $kategori]); 
     }
     public function fotocreate () {
-        return view('admin/dashboard.galeri.foto_add');
+        return view('admin.dashboard.galeri.foto_add');
     }
     public function kategorilist () {
         $kategori = FotoCategory::all();
-        return view('admin/dashboard.galeri.foto_add', ['kategori' => $kategori]);
+        return view('admin.dashboard.galeri.foto_add', ['kategori' => $kategori]);
     }
     public function fotosave (Request $request) {
         $this->validate($request, [
             'judul' => 'required',
             'isi' => 'required',
-            'foto_category_id' => 'required',
+            // 'foto_category_id' => 'required',
             'kategori' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg,heic|max:2048',
         ]);
 
         if($request->hasFile('gambar')) {
@@ -41,16 +41,16 @@ class GaleriController extends Controller
         try {
             $data = new Foto;
             $data->judul = $request->judul;
-            $data->foto_category_id = $request->foto_category_id;
+            $data->foto_category_id = $request->kategori;
             $data->kategori = $request->kategori;
             $data->isi = $request->isi;
             $data->gambar = $path;
             $data->save();
-            dd($data);
+            // dd($data);
 
             Session()->flash('alert-success', 'Data berhasil disimpan');
             // return redirect('dashboard/galeri/'.$data->id);
-            return redirect('dashboard/galeri/');
+            return redirect('dashboard/galeri-photo-add/');
         } catch (\Exception $e) {
             Session()->flash('alert-danger', $e->getMessage());
             return redirect('dashboard/galeri-photo-add/')->withInput();

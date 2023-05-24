@@ -148,7 +148,7 @@
 
                         <div class="swiper-slide">
                             <button data-modal-target="info" data-modal-toggle="info" type="button" onclick="toggleModal('info')" id="{{ $row->id }}" class="block">
-                                <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->kategori }}" class="h-64 w-full object-cover sm:h-80 lg:h-96 hover:opacity-50" />
+                                <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->kategori }}" class="h-64 w-full sm:h-80 lg:h-96 hover:opacity-50" />
                                 <svg class="w-10 h-10 -rotate-45 -mt-10 opacity-50" xmlns="http://www.w3.org/2000/svg" id="arrow-circle-down" viewBox="0 0 24 24">
                                     <path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12ZM14.535,6.293l3.586,3.586h0a3,3,0,0,1,0,4.243l-3.586,3.585-.025.024a1,1,0,1,1-1.389-1.438L16.414,13,6,13.007a1,1,0,1,1,0-2L16.413,11,13.121,7.707a1,1,0,1,1,1.414-1.414Z"/>
                                 </svg>

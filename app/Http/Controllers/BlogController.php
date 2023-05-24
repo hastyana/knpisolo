@@ -10,12 +10,13 @@ class BlogController extends Controller
 { 
 
     public function index() {
-        $headline = Artikel::paginate(1);
-        $all = Artikel::latest()->paginate(2);
+        $headline = Artikel::latest()->paginate(1);
+        $head = Artikel::where(['kategori' => 'sejarah'])->paginate(2);
+        $all = Artikel::latest()->paginate(10);
         $news = Artikel::where(['jenis' => 'Berita'])->latest()->paginate(2);
         $articles = Artikel::where(['jenis' => 'Artikel'])->latest()->paginate(2);
         $press = Artikel::where(['jenis' => 'Pers'])->latest()->paginate(2);
-        return view('blog', ['headline' => $headline, 'all' => $all, 'news' => $news, 'articles' => $articles, 'press' => $press]);
+        return view('blog', ['headline' => $headline, 'head' => $head, 'all' => $all, 'news' => $news, 'articles' => $articles, 'press' => $press]);
     }
 
     public function show($slug) 

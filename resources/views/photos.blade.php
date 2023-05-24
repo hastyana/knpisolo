@@ -15,14 +15,14 @@
 
     <header id="header" class="overflow-hidden pt-10">
         <div class="container mx-auto py-0">
-            <div class="w-full py-0 px-5 md:px-10">
+            <div class="w-full py-0 px-5 md:px-10 border-b-2 border-black-1E1E1E">
                 <h2 class="xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-roboto font-extrabold text-black-1E1E1E">
                     Galeri Foto
                 </h2>
                 <p class="font-roboto text-lg font-medium capitalize text-black-1E1E1E break-words py-3">
                     Dokumentasi kegiatan yang dilaksanakan oleh DPD KNPI Kota Surakarta selama satu periode
                 </p>
-            </div>
+            </div> 
         </div>
     </header>
 
@@ -67,17 +67,17 @@
     </section>
 
     <section id="photos" class="pb-20 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0">
-        <div class="container mx-auto py-0 ">
-            <div class="swiper-container !overflow-hidden pb-10">
+        <div class="container mx-auto py-0">
+            <div class="swiper-container !overflow-hidden border-b-2 border-blue-56A5ED">
                 <div class="swiper-wrapper">
     
                     @foreach ($menu as $row)
     
                     <div class="swiper-slide w-1/12">
-                        <div class="flex items-center w-auto">
+                        <div class="flex justify-center items-center w-auto">
                             <ul class="py-2 flex justify-between text-base text-black-1E1E1E font-roboto font-normal">
                                 <li>
-                                    <a class="py-1 px-4 block no-underline opacity-100 duration-300 transform hover:opacity-50 hover:text-underline" href="{{ url ('photos-filter', $row->foto->kategori) }}">
+                                    <a class="py-1 px-4 block no-underline opacity-100 duration-300 transform hover:opacity-50 hover:text-underline" href="{{ url ('photos-filter', $row->kategori) }}">
                                         {{  $row->kategori  }}
                                     </a>
                                 </li>
@@ -90,7 +90,7 @@
                 </div>
             </div>
                 
-            <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-center">
+            <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-center pt-20">
                 
                 @foreach ($all as $row)
     

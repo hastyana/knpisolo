@@ -59,7 +59,7 @@
                     </div>
                     <div class="grid xl:grid-rows-2 grid-rows-1 gap-1 items-center">
 
-                        @foreach ($all as $row)
+                        @foreach ($head as $row)
 
                         <div class="w-full h-auto">
                             <div class="flex md:flex-row flex-col p-5 items-center justify-center overflow-hidden shadow-xl  font-robotoserif text-black-1E1E1E">
@@ -98,6 +98,52 @@
             </div>            
         </div>
     </header>
+
+    <section id="News" class="py-20 duration-[1000ms] taos:opacity-0">
+        <div class="container mx-auto py-0 flex justify-center">
+            <div class="w-full py-0 px-5 md:px-10">
+                <div class="grid gap-2">
+                    <div class="grid xl:grid-cols-2 grid-rows-1 gap-2">
+
+                        @foreach ($all as $row)
+
+                        <div class="w-full h-auto">
+                            <div class="flex md:flex-row flex-col p-5 items-center justify-center overflow-hidden shadow-xl border-t-2 border-black-1E1E1E font-robotoserif text-black-1E1E1E">
+                                <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->judul }}" class="object-cover w-full h-96 md:h-auto md:w-48">
+                                <div class="flex flex-col justify-between p-4 leading-normal">
+                                    <h2 class="text-2xl font-bold tracking-tight md:text-start text-center">{{ Str::limit($row->judul, 50) }}</h2>
+                                    <p class="font-normal py-2 md:text-start text-center">
+                                        {{ Str::limit(strip_tags($row->isi, 150)) }}
+                                    </p>
+                                    <p class="font-bold">
+                                        by : {{ $row->penulis }}
+                                    </p>
+                                    <div class="flex items-end">
+                                        <p class="text-base opacity-70">
+                                            {{ $row->created_at }}
+                                        </p>
+                                        <p class="text-base opacity-70 px-5">
+                                            
+                                        </p>
+                                    </div>                                
+                                    <div class="flex justify-end -mt-12">
+                                        <a href="{{ url ('home-post', $row->slug) }}" class="hover:opacity-50">
+                                            <svg class="w-10 h-10 -rotate-45" xmlns="http://www.w3.org/2000/svg" id="arrow-circle-down" viewBox="0 0 24 24">
+                                                <path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12ZM14.535,6.293l3.586,3.586h0a3,3,0,0,1,0,4.243l-3.586,3.585-.025.024a1,1,0,1,1-1.389-1.438L16.414,13,6,13.007a1,1,0,1,1,0-2L16.413,11,13.121,7.707a1,1,0,1,1,1.414-1.414Z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </section>
 
     <section id="blog" class="py-20 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0">        
         <div class="container mx-auto py-0 flex justify-center">

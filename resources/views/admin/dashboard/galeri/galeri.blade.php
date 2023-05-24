@@ -109,63 +109,9 @@
                             <h2 class="mt-5 text-2xl font-semibold text-black-1E1E1E">
                                 Galeri
                             </h2>
-                        </div>           
-                        <!-- Categories Table -->
-                        <div class="w-full overflow-hidden rounded-lg shadow-xs py-10">
-                            <div class="flex flex-row justify-between">
-                                <a href="{{ url('/dashboard/galeri-category') }}" type="button" class="focus:outline-none text-white-fafafa bg-green-400 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2">
-                                    + <span class="px-2"> | </span> Kategori
-                                </a>
-                            </div>
-                            <div class="w-full overflow-x-auto">
-                                <table class="w-full whitespace-no-wrap">
-                                    <thead>
-                                        <tr class="text-xs font-semibold tracking-wide text-left text-black-1E1E1E uppercase border-b bg-gray-50">
-                                            <th class="px-4 py-3">No</th>
-                                            <th class="px-4 py-3">Kategori</th>
-                                            <th class="px-4 py-3">Tanggal</th>
-                                            {{-- <th class="px-4 py-3"></th> --}}
-                                        </tr>
-                                    </thead>
-                                    <tbody class="bg-white-fafafa divide-y">
-
-                                        @php $no=0; @endphp
-                                        @foreach($kategori as $row)
-                                        @php $no++; @endphp
-                                            
-                                        <tr class="text-black-1E1E1E">
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $no }}
-                                            </td>                                          
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->kategori }}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->updated_at->format('D M Y') }}
-                                                {{ $row->updated_at->diffForHumans() }}
-                                            </td>
-                                            {{-- <td class="flex justify-center items-center gap-2 py-4 text-sm">
-                                                <a href="" class="bg-red-200 px-2 py-2 rounded-lg hover:opacity-70">
-                                                    <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                                                        <g>
-                                                            <path d="M448,85.333h-66.133C371.66,35.703,328.002,0.064,277.333,0h-42.667c-50.669,0.064-94.327,35.703-104.533,85.333H64   c-11.782,0-21.333,9.551-21.333,21.333S52.218,128,64,128h21.333v277.333C85.404,464.214,133.119,511.93,192,512h128   c58.881-0.07,106.596-47.786,106.667-106.667V128H448c11.782,0,21.333-9.551,21.333-21.333S459.782,85.333,448,85.333z    M234.667,362.667c0,11.782-9.551,21.333-21.333,21.333C201.551,384,192,374.449,192,362.667v-128   c0-11.782,9.551-21.333,21.333-21.333c11.782,0,21.333,9.551,21.333,21.333V362.667z M320,362.667   c0,11.782-9.551,21.333-21.333,21.333c-11.782,0-21.333-9.551-21.333-21.333v-128c0-11.782,9.551-21.333,21.333-21.333   c11.782,0,21.333,9.551,21.333,21.333V362.667z M174.315,85.333c9.074-25.551,33.238-42.634,60.352-42.667h42.667   c27.114,0.033,51.278,17.116,60.352,42.667H174.315z"/>
-                                                        </g>
-                                                    </svg>
-                                                </a>
-                                            </td> --}}
-                                        </tr>
-
-                                        @endforeach
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                            @if($kategori->hasPages())
-                                {{ $kategori->links() }}
-                            @endif
-                        </div>           
+                        </div>                                             
                         <!-- Photos Table -->
-                        <div class="w-full overflow-hidden rounded-lg shadow-xs py-20">
+                        <div class="w-full overflow-hidden rounded-lg shadow-xs py-10">
                             <div class="flex flex-row justify-between">
                                 <a href="{{ url('/dashboard/galeri-photo-add') }}" type="button" class="focus:outline-none text-white-fafafa bg-green-400 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2">
                                     + <span class="px-2"> | </span> Foto
@@ -230,6 +176,60 @@
                                 {{ $foto->links() }}
                             @endif
                         </div>
+                        <!-- Categories Table -->
+                        <div class="w-full overflow-hidden rounded-lg shadow-xs py-20">
+                            <div class="flex flex-row justify-between">
+                                <a href="{{ url('/dashboard/galeri-category') }}" type="button" class="focus:outline-none text-white-fafafa bg-green-400 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2">
+                                    + <span class="px-2"> | </span> Kategori
+                                </a>
+                            </div>
+                            <div class="w-full overflow-x-auto">
+                                <table class="w-full whitespace-no-wrap">
+                                    <thead>
+                                        <tr class="text-xs font-semibold tracking-wide text-left text-black-1E1E1E uppercase border-b bg-gray-50">
+                                            <th class="px-4 py-3">No</th>
+                                            <th class="px-4 py-3">Kategori</th>
+                                            <th class="px-4 py-3">Tanggal</th>
+                                            {{-- <th class="px-4 py-3"></th> --}}
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white-fafafa divide-y">
+
+                                        @php $no=0; @endphp
+                                        @foreach($kategori as $row)
+                                        @php $no++; @endphp
+                                            
+                                        <tr class="text-black-1E1E1E">
+                                            <td class="px-4 py-3 text-sm">
+                                                {{ $no }}
+                                            </td>                                          
+                                            <td class="px-4 py-3 text-sm">
+                                                {{ $row->kategori }}
+                                            </td>
+                                            <td class="px-4 py-3 text-sm">
+                                                {{ $row->updated_at->format('D M Y') }}
+                                                {{ $row->updated_at->diffForHumans() }}
+                                            </td>
+                                            {{-- <td class="flex justify-center items-center gap-2 py-4 text-sm">
+                                                <a href="" class="bg-red-200 px-2 py-2 rounded-lg hover:opacity-70">
+                                                    <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                                        <g>
+                                                            <path d="M448,85.333h-66.133C371.66,35.703,328.002,0.064,277.333,0h-42.667c-50.669,0.064-94.327,35.703-104.533,85.333H64   c-11.782,0-21.333,9.551-21.333,21.333S52.218,128,64,128h21.333v277.333C85.404,464.214,133.119,511.93,192,512h128   c58.881-0.07,106.596-47.786,106.667-106.667V128H448c11.782,0,21.333-9.551,21.333-21.333S459.782,85.333,448,85.333z    M234.667,362.667c0,11.782-9.551,21.333-21.333,21.333C201.551,384,192,374.449,192,362.667v-128   c0-11.782,9.551-21.333,21.333-21.333c11.782,0,21.333,9.551,21.333,21.333V362.667z M320,362.667   c0,11.782-9.551,21.333-21.333,21.333c-11.782,0-21.333-9.551-21.333-21.333v-128c0-11.782,9.551-21.333,21.333-21.333   c11.782,0,21.333,9.551,21.333,21.333V362.667z M174.315,85.333c9.074-25.551,33.238-42.634,60.352-42.667h42.667   c27.114,0.033,51.278,17.116,60.352,42.667H174.315z"/>
+                                                        </g>
+                                                    </svg>
+                                                </a>
+                                            </td> --}}
+                                        </tr>
+
+                                        @endforeach
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            @if($kategori->hasPages())
+                                {{ $kategori->links() }}
+                            @endif
+                        </div> 
                         <!-- Videos Table -->
                         <div class="w-full overflow-hidden rounded-lg shadow-xs py-10">
                             <a href="{{ url('/dashboard/galeri-video-add') }}" type="button" class="focus:outline-none text-white-fafafa bg-green-400 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2">

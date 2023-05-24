@@ -7,12 +7,13 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Artikel;
 use App\Models\BlogCategory;
+use Illuminate\Support\Str;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ArtikelController extends Controller
 {
     // Articles
-    public function artikel () {
+    public function artikel () { 
         return view('admin/dashboard.artikel.artikel');
     }
 
@@ -20,10 +21,15 @@ class ArtikelController extends Controller
         return view('admin/dashboard.artikel.artikel_add');
     }
 
+    public function kategorilist () {
+        $kategori = BlogCategory::all();
+        return view('admin.dashboard.artikel.artikel_add', ['kategori' => $kategori]);
+    }
+
     public function save (Request $request) {
         $this->validate($request, [
             'judul' => 'required',
-            'slug' => 'required',
+            // 'slug' => 'required',
             'penulis' => 'required',
             'kategori' => 'required',
             'jenis' => 'required',
@@ -47,9 +53,11 @@ class ArtikelController extends Controller
         try {
             $data = new Artikel;
             $data->judul = $request->judul;
-            $data->slug = $request->slug;
+            // $data->slug = $request->slug;
+            $data->slug = Str::slug($request->judul);
             // $data->slug = SlugService::createSlug(Artikel::class, 'slug', $data->judul);
             $data->penulis = $request->penulis;
+            $data->artikel_category_id = $request->kategori;
             $data->kategori = $request->kategori;
             $data->jenis = $request->jenis;
             $data->isi = $request->isi;
@@ -69,7 +77,8 @@ class ArtikelController extends Controller
 
     public function show () {
         $data = Artikel::paginate(10);
-        return view('admin/dashboard.artikel.artikel', compact(['data']));
+        $kategori = BlogCategory::paginate(5);
+        return view('admin/dashboard.artikel.artikel', ['data' => $data, 'kategori' => $kategori]);
     }
     public function update () {
         
@@ -101,10 +110,10 @@ class ArtikelController extends Controller
     // Categories
     public function kategori () {
         $kategori = BlogCategory::all();
-        return view('admin/dashboard.artikel.kategori_add', ['kategori' => $kategori]); 
+        return view('admin/dashboard.artikel.category', ['kategori' => $kategori]); 
     }
     public function kategoricreate () {
-        return view('admin/dashboard.artikel.kategori_add');
+        return view('admin/dashboard.artikel.category');
     }
     public function kategorisave (Request $request) {
         $this->validate($request, [
@@ -118,10 +127,10 @@ class ArtikelController extends Controller
 
             Session()->flash('alert-success', 'Data berhasil disimpan');
             // return redirect('dashboard/galeri/'.$data->id);
-            return redirect('dashboard/category-add/');
+            return redirect('dashboard/artikel-category/');
         } catch (\Exception $e) {
             Session()->flash('alert-danger', $e->getMessage());
-            return redirect('dashboard/category-add/')->withInput();
+            return redirect('dashboard/artikel-category/')->withInput();
         }
     }
 }

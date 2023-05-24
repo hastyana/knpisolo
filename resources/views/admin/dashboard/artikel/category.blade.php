@@ -6,10 +6,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="{{ asset ('img/logo.png') }}">
-        <title>Dashboard - Artikel</title>
+        <title>Dashboard - Galeri</title>
         @vite('resources/css/app.css', 'resources/css/admin.css', 'resources/js/charts-bars.js', 'resources/js/charts-lines.js', 'resources/js/charts-pie.js', 'resources/js/focus-trap.js', 'resources/js/init-alpine.js')
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-        <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css"  rel="stylesheet" />
@@ -103,156 +102,46 @@
             </aside>
             <div class="flex flex-col flex-1 w-full">
                 {{ View::make('admin/topbar') }}
-
+ 
                 <main class="h-full overflow-y-auto">
                     <div class="container px-6 mx-auto grid">
                         <div class="flex justify-between items-center">
                             <h2 class="my-6 text-2xl font-semibold text-black-1E1E1E">
-                                Artikel
+                                Kategori
                             </h2>
-                            <a href="{{ url('/dashboard/artikel-add') }}" type="button" class="focus:outline-none text-white-fafafa bg-green-400 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2">
-                                + <span class="px-2"> | </span> Artikel
+                            <a type="button" href="{{ url('/dashboard/artikel') }}" class="focus:outline-none text-white-fafafa bg-yellow-400 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2">
+                                < <span class="px-2"> | </span> Kembali
                             </a>
                         </div>                      
-                        <!-- New Table -->
-                        <div class="w-full overflow-hidden rounded-lg shadow-xs">
-                            <div class="w-full overflow-x-auto">
-                                <table class="w-full whitespace-no-wrap">
-                                    <thead>
-                                        <tr class="text-xs font-semibold tracking-wide text-left text-black-1E1E1E uppercase border-b">
-                                            <th class="px-4 py-3">No</th>
-                                            <th class="px-4 py-3">Gambar</th>
-                                            <th class="px-4 py-3">Judul</th>
-                                            <th class="px-4 py-3">Penulis</th>
-                                            <th class="px-4 py-3">Profil</th>
-                                            <th class="px-4 py-3">Kategori</th>
-                                            <th class="px-4 py-3">Jenis</th>
-                                            <th class="px-4 py-3">slug</th>
-                                            <th class="px-4 py-3">Isi</th>
-                                            <th class="px-4 py-3">Tanggal</th>
-                                            {{-- <th class="px-4 py-3"></th> --}}
-                                        </tr>
-                                    </thead>
-                                    <tbody class="bg-white-fafafa divide-y">
 
-                                        @php $no=0; @endphp
-                                        @foreach ($data as $row)
-                                        @php $no++; @endphp
+                        <?php
 
-                                        <tr class="text-black-1E1E1E">
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $no }}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->judul }}" class="w-32 h-auto" />
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->judul }}
-                                            </td> 
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->penulis }}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                <img src="{{ asset ('storage/'.$row->profil) }}" alt="{{ $row->profil }}" title="{{ $row->judul }}" class="w-16 h-16 object-cover rounded-full" />
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->kategori }}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->jenis }}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->slug }}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ Str::limit(strip_tags($row->isi, 150)) }}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->created_at }}
-                                            </td>
-                                            {{-- <td class="flex justify-center items-center gap-2 py-4 text-sm">
-                                                <a href="" class="bg-yellow-200 px-2 py-2 rounded-lg hover:opacity-70">
-                                                    <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24">
-                                                        <path d="M18,19v4.7a4.968,4.968,0,0,0,1.879-1.164l2.656-2.658A4.954,4.954,0,0,0,23.7,18H19A1,1,0,0,0,18,19Z"/>
-                                                        <path d="M7.172,13.828A4,4,0,0,0,6,16.657V18H7.343a4,4,0,0,0,2.829-1.172L21.5,5.5a2.121,2.121,0,0,0-3-3Z"/>
-                                                        <path d="M24,4.952a4.087,4.087,0,0,1-1.08,1.962L11.586,18.243A5.961,5.961,0,0,1,7.343,20H6a2,2,0,0,1-2-2V16.657a5.957,5.957,0,0,1,1.758-4.242L17.086,1.086A4.078,4.078,0,0,1,19.037,0c-.013,0-.024,0-.037,0H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16V19a3,3,0,0,1,3-3h5V5C24,4.984,24,4.969,24,4.952Z"/>
-                                                    </svg>
-                                                </a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <a href="artikel-delete/{{ $row->id }}" class="bg-red-200 px-2 py-2 rounded-lg hover:opacity-70">
-                                                    <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                                                        <g>
-                                                            <path d="M448,85.333h-66.133C371.66,35.703,328.002,0.064,277.333,0h-42.667c-50.669,0.064-94.327,35.703-104.533,85.333H64   c-11.782,0-21.333,9.551-21.333,21.333S52.218,128,64,128h21.333v277.333C85.404,464.214,133.119,511.93,192,512h128   c58.881-0.07,106.596-47.786,106.667-106.667V128H448c11.782,0,21.333-9.551,21.333-21.333S459.782,85.333,448,85.333z    M234.667,362.667c0,11.782-9.551,21.333-21.333,21.333C201.551,384,192,374.449,192,362.667v-128   c0-11.782,9.551-21.333,21.333-21.333c11.782,0,21.333,9.551,21.333,21.333V362.667z M320,362.667   c0,11.782-9.551,21.333-21.333,21.333c-11.782,0-21.333-9.551-21.333-21.333v-128c0-11.782,9.551-21.333,21.333-21.333   c11.782,0,21.333,9.551,21.333,21.333V362.667z M174.315,85.333c9.074-25.551,33.238-42.634,60.352-42.667h42.667   c27.114,0.033,51.278,17.116,60.352,42.667H174.315z"/>
-                                                        </g>
-                                                    </svg>
-                                                </a>
-                                            </td> --}}
-                                        </tr>
-                                        
-                                        @endforeach
+                        if(old()) {
+                            $kategori = old('kategori');
+                        } else {
+                            $kategori = null;
+                        }
 
-                                    </tbody>
-                                </table>
-                            </div>
-                            @if($data->hasPages())
-                                {{ $data->links() }}
-                            @endif
-                        </div>
-                        <!-- Categories Table -->
+                        ?> 
+
                         <div class="w-full overflow-hidden rounded-lg shadow-xs py-10">
-                            <div class="flex flex-row justify-between">
-                                <a href="{{ url('/dashboard/artikel-category') }}" type="button" class="focus:outline-none text-white-fafafa bg-green-400 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2">
-                                    + <span class="px-2"> | </span> Kategori
-                                </a>
-                            </div>
-                            <div class="w-full overflow-x-auto">
-                                <table class="w-full whitespace-no-wrap">
-                                    <thead>
-                                        <tr class="text-xs font-semibold tracking-wide text-left text-black-1E1E1E uppercase border-b bg-gray-50">
-                                            <th class="px-4 py-3">No</th>
-                                            <th class="px-4 py-3">Kategori</th>
-                                            <th class="px-4 py-3">Tanggal</th>
-                                            {{-- <th class="px-4 py-3"></th> --}}
-                                        </tr>
-                                    </thead>
-                                    <tbody class="bg-white-fafafa divide-y">
 
-                                        @php $no=0; @endphp
-                                        @foreach($kategori as $row)
-                                        @php $no++; @endphp
-                                            
-                                        <tr class="text-black-1E1E1E">
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $no }}
-                                            </td>                                          
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->kategori }}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                {{ $row->updated_at->format('D M Y') }}
-                                                {{ $row->updated_at->diffForHumans() }}
-                                            </td>
-                                            {{-- <td class="flex justify-center items-center gap-2 py-4 text-sm">
-                                                <a href="" class="bg-red-200 px-2 py-2 rounded-lg hover:opacity-70">
-                                                    <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                                                        <g>
-                                                            <path d="M448,85.333h-66.133C371.66,35.703,328.002,0.064,277.333,0h-42.667c-50.669,0.064-94.327,35.703-104.533,85.333H64   c-11.782,0-21.333,9.551-21.333,21.333S52.218,128,64,128h21.333v277.333C85.404,464.214,133.119,511.93,192,512h128   c58.881-0.07,106.596-47.786,106.667-106.667V128H448c11.782,0,21.333-9.551,21.333-21.333S459.782,85.333,448,85.333z    M234.667,362.667c0,11.782-9.551,21.333-21.333,21.333C201.551,384,192,374.449,192,362.667v-128   c0-11.782,9.551-21.333,21.333-21.333c11.782,0,21.333,9.551,21.333,21.333V362.667z M320,362.667   c0,11.782-9.551,21.333-21.333,21.333c-11.782,0-21.333-9.551-21.333-21.333v-128c0-11.782,9.551-21.333,21.333-21.333   c11.782,0,21.333,9.551,21.333,21.333V362.667z M174.315,85.333c9.074-25.551,33.238-42.634,60.352-42.667h42.667   c27.114,0.033,51.278,17.116,60.352,42.667H174.315z"/>
-                                                        </g>
-                                                    </svg>
-                                                </a>
-                                            </td> --}}
-                                        </tr>
+                            @include('errors.message')
 
-                                        @endforeach
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                            @if($kategori->hasPages())
-                                {{ $kategori->links() }}
-                            @endif
-                        </div>
+                            <form class="py-3 font-roboto px-5" method="POST" action="{{ url('/dashboard/artikel-category') }}" onsubmit="return confirmSubmit()" enctype="multipart/form-data">
+                                
+                                @csrf                                
+                                
+                                <div class="relative z-0 w-full mb-6 group">
+                                    <input type="text" name="kategori" id="kategori" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ $kategori }}" required />
+                                    <label for="kategori" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Kategori</label>
+                                </div>
+                                <button type="submit" class="focus:outline-none text-white-fafafa bg-green-400 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2">
+                                    Tambah
+                                </button>
+                                
+                            </form>
+                        </div>                         
                     </div>
                 </main>
             </div>            

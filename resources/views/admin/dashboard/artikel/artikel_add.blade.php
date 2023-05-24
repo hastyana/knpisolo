@@ -1,25 +1,5 @@
 <!DOCTYPE html>
 
-<?php
-
-if(old()) {
-    $judul = old('judul');
-    $slug = old('slug');
-    $penulis = old('penulis');
-    $kategori = old('kategori');
-    $jenis = old('jenis');
-    $isi = old('isi');
-} else {
-    $judul = null;
-    $slug = null;
-    $penulis = null;
-    $kategori = null;
-    $jenis = null;
-    $isi = null;
-}
-
-?>
-
 <html>
 
     <head>
@@ -144,28 +124,33 @@ if(old()) {
                                 @csrf
 
                                 <div class="relative z-0 w-full mb-6 group">
-                                    <input type="text" name="judul" id="judul" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ $judul }}" required />
+                                    <input type="text" name="judul" id="judul" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ old('judul') }}" required />
                                     <label for="judul" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Judul</label>
                                 </div>
-                                <div class="relative z-0 w-full mb-6 group">
-                                    <input type="text" name="slug" id="slug" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ $slug }}" required />
+                                {{-- <div class="relative z-0 w-full mb-6 group">
+                                    <input type="text" name="slug" id="slug" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ old('slug') }}" required />
                                     <label for="slug" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Slug</label>
-                                </div>
+                                </div> --}}
                                 <div class="relative z-0 w-full mb-6 group">
-                                    <input type="text" name="penulis" id="penulis" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ $penulis }}" required />
+                                    <input type="text" name="penulis" id="penulis" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ old('penulis') }}" required />
                                     <label for="penulis" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Penulis</label>
+                                </div> 
+                                <div class="relative z-0 w-full mb-6 group">
+                                    <select name="kategori" id="kategori" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer">
+                                        <option value="">-- Pilih --</option>
+                                        @foreach ($kategori as $row)
+                                            <option value="{{ $row->kategori }}" {{ old('kategori') == $row->id ? 'selected' : '' }}>{{ $row->kategori }}</option>
+                                        @endforeach
+                                    </select>
+                                    <label for="judul" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Kategori</label>
                                 </div>
                                 <div class="relative z-0 w-full mb-6 group">
-                                    <input type="text" name="kategori" id="kategori" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ $kategori }}" required />
-                                    <label for="kategori" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Kategori</label>
-                                </div>
-                                <div class="relative z-0 w-full mb-6 group">
-                                    <input type="text" name="jenis" id="jenis" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ $jenis }}" required />
+                                    <input type="text" name="jenis" id="jenis" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer" value="{{ old('jenis') }}" required />
                                     <label for="jenis" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Jenis</label>
                                 </div>
                                 <div class="relative z-0 w-full mb-6 group">
                                     <label for="isi" class="peer-focus:font-medium absolute text-sm text-black-1E1E1E duration-300 transform -translate-y-6 scale-75 top-3 -mt-2 origin-[0] peer-focus:left-0 peer-focus:text-blue-56A5ED peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Isi</label>
-                                    <textarea type="text" name="isi" id="isi" class="ckeditor block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer opacity-70"  required > {!! $isi !!} </textarea>
+                                    <textarea type="text" name="isi" id="isi" class="ckeditor block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-black-1E1E1E border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:broder-blue-56A5ED peer opacity-70"  required > {!! old('isi') !!} </textarea>
                                 </div> 
                                 <div class="relative z-0 w-full mb-6 group">
                                     <label class="block mb-2 text-sm font-medium text-black-1E1E1E" for="profil">Upload Profile</label>

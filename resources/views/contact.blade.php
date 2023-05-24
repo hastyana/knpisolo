@@ -27,22 +27,18 @@ if(old()) {
 <body class="bg-white-fafafa">
     {{ View::make('navbar') }}
 
-    <header id="Header" class="overflow-hidden">
-        <div class="relative">
-            <img src={{ asset ('img/manahan.png') }} alt="background" class="w-full h-80 object-cover mt-0 bg-center bg-no-repeat">
-            <h1 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 xl:text-5xl lg:text-4xl md:text-3xl text-2xl text-center font-roboto font-extrabold text-white-fafafa">
-                Kontak</h1>
-        </div>        
-    </header>
-
-    <section id="Contact" class="py-20 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0">        
-        <div class="container mx-auto py-0 flex justify-center">
+    <header id="Contact" class="py-10 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0">      
+        <div class="container mx-auto px-5 md:px-10">
+            <div class="border-b-2 border-black-1E1E1E">
+                <h2 class="xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-roboto font-extrabold text-black-1E1E1E">
+                    Get In Touch
+                </h2>
+            </div>
+        </div>  
+        <div class="container mx-auto flex justify-center py-10">
             <div class="w-full py-0 px-5 md:px-10">
                 <div class="grid md:grid-cols-2 grid-rows-1">
                     <div>
-                        <h2 class="xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-roboto font-extrabold text-black-1E1E1E">
-                            Get In Touch
-                        </h2>
                         <div class="flex flex-col py-5">
                             <p class="md:text-3xl text-xl font-roboto font-semibold text-black-1E1E1E pb-3">
                                 Contact
@@ -125,15 +121,15 @@ if(old()) {
                     <div>
                         <div class="w-full px-4 flex justify-center">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.0977614002686!2d110.83015687397295!3d-7.564319674703245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a17aab2991443%3A0xe2192bb606ae9493!2sGedung%20Sekretariat%20Bersama%20Kota%20Surakarta!5e0!3m2!1sid!2sid!4v1684115335014!5m2!1sid!2sid" 
-                            width="1000" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            class="w-full h-214p" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
             </div>            
         </div>
-    </section>
+    </header>
 
-    <section id="Testimoni" class="pb-20 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0">        
+    <section id="Testimoni" class="py-20 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0">        
         <div class="container mx-auto py-0 flex justify-center">
             <div class="w-full py-0 px-5 md:px-10 bg-white-fafafa shadow-xl">
                 <h2 class="md:text-3xl text-2xl text-center font-roboto font-extrabold text-black-1E1E1E">

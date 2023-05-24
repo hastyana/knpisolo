@@ -17,54 +17,11 @@
         <div class="container mx-auto py-0">
             <div class="w-full py-0 px-5 md:px-10">
                 <h2 class="xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-roboto font-extrabold text-black-1E1E1E">
-                    Galeri Foto
+                    Galeri Foto {{  $data->kategori  }}
                 </h2>
-                <p class="font-roboto text-lg font-medium capitalize text-black-1E1E1E break-words py-3">
-                    Dokumentasi kegiatan yang dilaksanakan oleh DPD KNPI Kota Surakarta selama satu periode
-                </p>
             </div>
         </div>
     </header>
-
-    <section id="photo-carousel" class="py-20 duration-[1000ms] taos:opacity-0">        
-        <div class="container mx-auto py-0">     
-            <div class="w-full py-0 px-5 md:px-10 flex justify-between">
-                
-                <div class="flex items-center py-5">
-                    <button class="prev-button rounded-full p-3 text-green-d5ff40 transition duration-200 hover:rounded-full hover:bg-green-d5ff40 hover:text-black-252525">
-                        <span class="sr-only">Previous Slide</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 -rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </button>
-                </div>
-                
-                <div class="swiper xl:h-614p h-auto w-full overflow-hidden flex flex-nowrap text-center">
-                    <div class="swiper-wrapper">
-
-                        @foreach ($photos as $row)
-
-                        <div class="flex-none w-full flex flex-col items-center justify-center swiper-slide">
-                            <img src="{{ asset ('storage/'.$row->gambar) }}" alt="{{ $row->gambar }}" title="{{ $row->kategori }}" class="w-screen h-full bg-center bg-no-repeat object-cover" />
-                        </div>
-
-                        @endforeach
-
-                    </div>
-                </div>
-
-                <div class="flex justify-end items-center py-5"> 
-                    <button class="next-button rounded-full p-3 text-green-d5ff40 transition duration-200 hover:rounded-full hover:bg-green-d5ff40 hover:text-black-252525">
-                        <span class="sr-only">Next Slide</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </section>
 
     <section id="photos" class="pb-20 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0">
         <div class="container mx-auto py-0 ">
@@ -72,21 +29,21 @@
             <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-center">
     
                 <article class="group px-2 py-4">
-                    <img src="{{ asset ('storage/'.$kategoris->gambar) }}" alt="{{ $kategoris->gambar }}" title={{ $kategoris->judul }} class="h-56 w-full object-cover" >
+                    <img src="{{ asset ('storage/'.$data->gambar) }}" alt="{{ $data->gambar }}" title={{ $data->judul }} class="h-56 w-full object-cover" >
                     <div class="p-4 bg-gray-100 border-b-2 border-black-1E1E1E">
                         <h3 class="text-lg font-medium text-gray-900">
-                            {{  $kategoris->judul  }}
+                            {{  $data->judul  }}
                         </h3>              
                         <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                            {!! $kategoris->isi !!}
+                            {!! $data->isi !!}
                         </p>
                     </div>
                 </article>
                 
             </div>
         </div>        
-        @if($all->hasPages())
-            {{ $all->links() }}
+        @if($data->hasPages())
+            {{ $data->links() }}
         @endif
     </section>
 
